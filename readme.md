@@ -1,24 +1,17 @@
-# Povrayobjekte für für Simutrans
+#NNW's Povray Gebäude für PAK128.German
 
-Povraydateien meiner Häuser und Bäume für das Simutrans Pakset "PAK128.german"
+Häuser und Bäume für das Simutrans Pakset [PAK128.german](https://www.simutrans-forum.de/mybb/forumdisplay.php?fid=29)
 
 ## Getting Started
-Ihr könnt die *.pov Dateien mit jedem Texteditor öffnen und editieren.
-...
-Syntaxhighlightning gibts bei Kate, und den in Povray for Windows eingebauten Editor.
-...
-Um daraus eine Grafik zu machen benötigt ihr ausserdem die Include Dateien aus dem Ordner "myinc"
 
-### Benötigte Software
-
-Kate oder ~ Editor
-...
-Povray for Unix / Povray for Windows
+Die Szenedateien (.pov) können mit jedem Texteditor geöffnet und editiert werden.<br>
+Syntaxhighlightning gibt's allerdings nur beim KDE Editor "Kate" und den in Povray for Windows eingebauten.<br>
+Um daraus eine Grafik zu machen benötigt ihr ausserdem die Include Dateien aus dem Ordner "myinc" und natürlich den Raytracer [www.povray.org](Pov Ray) selber.
 
 ## Authors
 
 * **Daniel Martin** - [HerrUntermoser](https://github.com/HerrUntermoser)
 
-## License
-
-This project is licensed under the GPL v2
+## Copyright
+Dieses Projekt und sein Inhalt sind grösstenteils Open Source (Bis auf ein paar __Include Grafiken__).
+Es gilt dabei die GPL v.2.
