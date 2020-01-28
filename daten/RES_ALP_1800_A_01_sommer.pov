@@ -1,7 +1,7 @@
 // PoVRay 3.7
 // author: daniel_martin@gmx.at
 #version 3.7; // 3.6
-#declare Radiosity_ON =0; 
+#declare Radiosity_ON =1; 
 #if (Radiosity_ON = 1 )
 global_settings{
   ambient_light 1
@@ -90,11 +90,11 @@ plane { <0,1,0>, 0  hollow
 #declare BalkonPfosten = texture_map{[0.0 T_Wood12][0.6 T_Wood26][0.7 T_Wood12][0.7 TTrans][0.9 BT][1.0 BT]}
 #declare HT = texture {pigment {color DarkSlateBlue}}
 #declare Wand_Farbe_1 =
-texture{ pigment{ bozo turbulence 0.9 color_map{[0.0 color rgb <.95,.95,.96>*0.5]
-                                                [0.5 color rgb <1,1,1>*0.8]
-                                                [1.0 color rgb <.87,.87,.88>*0.5]
+texture{ pigment{ bumps turbulence 2 color_map{[0.0 color rgb <.95,.95,.96>]
+                                                [0.5 color rgb <1,1,1>*1.1]
+                                                [1.0 color rgb <.87,.87,.88>*.8]
 
-}} finish {ambient rgb <0.79,0.65,0.31>*0.2}
+}} finish {ambient 0.3}
        }
 #declare Fenster5x8_5_L = union {
 box {<0.2,0.2,0.05>,<4.8,8.3,0.1> texture {Glass}}
@@ -106,7 +106,7 @@ box {<0.2,0.2,0.05>,<4.8,8.3,0.1> texture {Glass}}
                 box {<2.4,0,0>,<2.6,6.4,0.2>}
 box{<0,0,0>,<2.5,8.5,-0.1> rotate y*-2 translate <-2.5,0,0>}
 box{<2.5,0,0>,<5,8.5,-0.1> rotate y*2 translate <2.5,0,0>}
-                texture{pigment{color rgb <.65,.63,.76>} scale 0.08}
+                texture{pigment{color rgb <.39,.07,.07>*1.1}}
                 }
 #declare FirstTextur = texture{pigment{ gradient x color_map{ [0.0 color DarkSlateGrey*0.4][0.9 color DarkSlateGrey][0.9 color rgb 0.2][1.0 color rgb 0.2]}}scale 2 finish{ambient 0}}
 #declare Haus_Roh =
@@ -294,10 +294,47 @@ object{Zaun_Pfosten translate <xHstart,0,-14.8>}
 object{Zaun_Pfosten translate <xVstart,0,-133.8>}
 #declare xVstart = xVstart + 0.7;
 #end
-//Asphalt in der Einfahrt
+//Kisten
+object {Kiste_1 translate<20,0,-35> texture{T_Wood24 scale .8}}
+object {Kiste_1 rotate y*23 translate<25,0,-35> texture{T_Wood24 scale .8}}
+object {Kiste_1 translate<20,0,-39.5> texture{T_Wood24 scale .8}}
+//Tisch
+object{Table (8,3,5,0.1,0.4) translate<30,0,-45> texture{DMFWood2}}
+//Kunstwerk
+intersection{
+box {<-0.5,-0.5,-0.5>,< 0.5,0.5,0.5>
+     texture{T_Stone18 scale 0.5} }
+sphere{<0,0,0>,0.66
+     texture{T_Stone21} }
+cylinder{<0,0,-1>,<0,0,1>,0.3 inverse
+  texture{pigment{color YellowGreen}
+          finish {phong 0.5}}}
+cylinder{<0,-1,0>,<0,1,0>,0.3 inverse
+  texture{pigment{color YellowGreen}
+          finish {phong 0.5}}}
+cylinder{<-1,0,0>,<1,0,0>,0.3 inverse
+  texture{pigment{color YellowGreen}
+          finish {phong 0.5}}}
+scale 5 translate <65,0,-40>}
+intersection{
+box {<-0.5,-0.5,-0.5>,< 0.5,0.5,0.5>
+     texture{T_Stone18 scale 0.5} }
+sphere{<0,0,0>,0.66
+     texture{T_Stone21} }
+cylinder{<0,0,-1>,<0,0,1>,0.3 inverse
+  texture{pigment{color YellowGreen}
+          finish {phong 0.5}}}
+cylinder{<0,-1,0>,<0,1,0>,0.3 inverse
+  texture{pigment{color YellowGreen}
+          finish {phong 0.5}}}
+cylinder{<-1,0,0>,<1,0,0>,0.3 inverse
+  texture{pigment{color YellowGreen}
+          finish {phong 0.5}}}
+scale 5 rotate y*27 translate <70,0,-28>}
+//Kiesfläche
 box {<-19,-0.1,-14>,<99,0.05,-60>texture{ pigment{image_map{jpeg "kies_grob.jpg" map_type 0 interpolate 2} rotate x*90 scale <10,1,10>}
                  finish { diffuse 0.9}
-               }}
+               } }
 //Bäume
 
 #include "birke.inc"
@@ -308,47 +345,8 @@ box {<-19,-0.1,-14>,<99,0.05,-60>texture{ pigment{image_map{jpeg "kies_grob.jpg"
 #declare TOP_COLOR_1=<.12,.30,.17,0,0>;
 #declare TOP_COLOR_2=<.12, .30,.17,0,0>;
 
-/* 
-#declare LEAVES= 1*BUNCHES;
-#declare BOTTOM_COLOR_1=<0.4,0.2,0.1,0,0>;
-#declare BOTTOM_COLOR_2=<0.3,0.2,0.1,0,0>;
-#declare TOP_COLOR_1=<0.4,0.3,0.2,0,0>;
-#declare TOP_COLOR_2=<0.4,0.3,0.2,0,0>;
-// snow
-#declare SUNKEN_TRUNK_COLOR=<1,1,1>*1.3;
-#declare RAISED_TRUNK_COLOR=<1,1,1>*1.3;
-#declare FOLIAGE_COLOR_AT_BRANCH_END=0;
-#declare LEAVES=0*BUNCHES;
-*/
 #include "TOMTREE-1.5.inc"
 #declare Tree_01 = object{ TREE double_illuminate hollow}
-//-----------------------------------------------------
-
-object{ Tree_01
-        scale 3.3
-        rotate< 90, 45, 0>
-        translate< 20, 1.00, -110>
-      }
-object{ Tree_01
-        scale 3.3
-        rotate< 90, 45, 0>
-        translate< 20, 1.00, -120>
-      }
-object{ Tree_01
-        scale 4  //skalierung 0 
-        rotate< 90, 45, 0>
-        translate< 20, 1.00, -125>
-      }
-object{ Tree_01
-       scale 30  //skalierung 0 
-        rotate< 0, 45, 0>
-        translate< 60, 1.00, -125>
-      }
-object{ Tree_01
-       scale 30  //skalierung 0 
-        rotate< 0, 45, 0>
-        translate< 90, 1.00, -115>
-      }
 #declare RINDE = texture {
 	pigment {
 		granite
@@ -386,20 +384,16 @@ object{ Tree_01
 #declare BOZO1 = pigment {
 	bozo
 	color_map {
-		[0 color rgb <0,0.502,0>]
-		//[0 color rgb 1]
-		[1 color rgb <0.376,0.349,0.153>]
-		//[1 color rgb 0.9]
+		[0 color rgb <.12,.30,.17>]
+		[1 color rgb <0.12,.3,0.17>*0.4]
 	}
 	scale 0.04
 }
 #declare BOZO2 = pigment {
 	bozo
 	color_map {
-		[0 color rgb<0.176, 0.349, 0.153>]
-		//[0 color rgb<1, 0.9,1>]
-		[1 color rgb<0.149, 0.298,0.132>]
-		//[1 color rgb<1, 0.98,1>]
+		[0 color rgb <.12,.30,.17>]
+		[1 color rgb <0.12,.3,0.17>*.6]
 	}
 	scale 0.04
 }
@@ -419,6 +413,32 @@ object{ Tree_01
 		phong 0.1 phong_size 10*0.1
 	}
 }
+object{ Tree_01
+        scale 3.3
+        rotate< 90, 45, 0>
+        translate< 20, 1.00, -110>
+      }
+object{ Tree_01
+        scale 3.3
+        rotate< 90, 45, 0>
+        translate< 20, 1.00, -120>
+      }
+object{ Tree_01
+        scale 4  //skalierung 0 
+        rotate< 90, 45, 0>
+        translate< 20, 1.00, -125>
+      }
+object{ Tree_01
+       scale 30  //skalierung 0 
+        rotate< 0, 45, 0>
+        translate< 60, 1.00, -125>
+      }
+object{ Tree_01
+       scale 30  //skalierung 0 
+        rotate< 0, 45, 0>
+        translate< 90, 1.00, -115>
+      }
+
 #include "kiefer.inc"
 union {
 object{FOLIAGE}
@@ -446,7 +466,7 @@ translate <-10,0,-70>
 //Bodenplatte
 object {bodenplatte texture { pigment{ image_map { jpeg "grasstex1.jpg" map_type 0 interpolate 2}} rotate x*90 scale 15 finish {ambient 0}}}
 
-#declare Richtung = 1;
+#declare Richtung = 0;
 #switch ( Richtung )
 #case (0)
 //sued
