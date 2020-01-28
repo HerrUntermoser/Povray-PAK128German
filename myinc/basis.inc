@@ -530,6 +530,15 @@ box{<-1.5,4,-19.5>,<10.5,4.4,-23> rotate x*7 translate <0,-3,0> texture{gradient
           finish {phong 0.9}
         } translate<.6,1.5,.5>}
  }
+ #declare Kiste_1 = union{
+difference{    
+box{<0,0,0>,<4,4,4>}
+box{<0,0,0>,<6,3,3> translate<-1,.5,.5>}
+box{<0,0,0>,<3,6,3> translate<.5,-1,.5>}
+box{<0,0,0>,<3,3,6> translate<.5,.5,-1>}
+}
+box{<0.2,0.2,0.2>,<3.8,3.8,3.8>}
+}
 //============================
 #version basis_INC_Temp;
 #end
