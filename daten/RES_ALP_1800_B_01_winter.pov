@@ -317,7 +317,7 @@ box {<20,-0.1,-14>,<65,0.05,-60>texture{ pigment{image_map{jpeg "kies_grob.jpg" 
          object { eiche_13_leaves  double_illuminate
                   texture{ Blaetter_1 }   
                   interior_texture{ Blaetter_2 }}
-         scale 3 rotate y*37 translate <27,0,-75>}
+         scale 3 rotate y*37 translate <27,0,-55>}
 #include "trauerweide.inc"
 #declare Blaetter_3 = 
  texture{ pigment{ color rgbf< .16, .27,0,.3>*1}   
@@ -339,12 +339,12 @@ union { object { weeping_willow_13_stems texture{Rinde}}
          object { weeping_willow_13_leaves  double_illuminate
                   texture{ Blaetter_3 }   
                   interior_texture{ Blaetter_4 }}
-         scale 3 rotate y*37 translate <-5,0,-31>}
+         scale 3 rotate y*37 translate <5,0,-31>}
 union { object { black_oak_2_13_stems texture{Rinde}}
          object { black_oak_2_13_leaves  double_illuminate
                   texture{ Blaetter_4 }   
                   interior_texture{ Blaetter_3 }}
-         scale 3 rotate y*54 translate<-10,0,-122>}
+         scale 3 rotate y*54 translate<10,0,-122>}
 
 union { object { black_oak_2_13_stems texture{Rinde}}
          object { black_oak_2_13_leaves  double_illuminate
@@ -479,7 +479,7 @@ scale 22
 //Bodenplatte
 object {bodenplatte texture { pigment{ image_map { jpeg "grasstex1.jpg" map_type 0 interpolate 2}} rotate x*90 scale 15 finish {ambient 0}}}
 
-#declare Richtung = 3;
+#declare Richtung = 0;
 #switch ( Richtung )
 #case (0)
 //sued

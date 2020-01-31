@@ -29,6 +29,15 @@
           normal { bumps 0.15 scale 0.05 }
           finish {diffuse 0.8}
         }
+#declare Blaetter_Winter1 = 
+ texture{ pigment{ color rgbt< .9,.9,.9,.8>}   
+          finish {ambient 0.2 diffuse 0.8}
+        }
+#declare Blaetter_Winter2 = 
+ texture{ pigment{  color rgbt<1,1,1,.8>*.8}   
+          normal { bumps 0.15 scale 0.05 }
+          finish {diffuse 0.8}
+        }
 //=======================================================
 #declare bodenplatte = box { <-20,-0.1,-134>,<100,0,-15>}
 //=====================================================

@@ -303,83 +303,64 @@ box {<20,-0.1,-14>,<65,0.05,-60>texture{ pigment{image_map{jpeg "kies_grob.jpg" 
           finish { phong 0.2 reflection 0.00}         
         } // end of texture 
 //-------------------------------------------------------- 
-#declare Blaetter_1 = 
- texture{ pigment{ color rgb< .31, .57, .25>*0.9}   
-          normal { bumps 0.15 scale 0.05 }
-          finish {ambient 0.1 diffuse 0.9 phong 0.9}
-        }
-#declare Blaetter_2 = 
- texture{ pigment{  color rgbf< 0.2, 0.5, 0.0, 0.2>*0.25}   
-          normal { bumps 0.15 scale 0.05 }
-          finish {ambient 0.1 diffuse 0.9 phong 0.9}
-        }
  union { object { eiche_13_stems texture{Rinde}}
          object { eiche_13_leaves  double_illuminate
-                  texture{ Blaetter_1 }   
-                  interior_texture{ Blaetter_2 }}
-         scale 3 rotate y*37 translate <27,0,-75>}
+                  texture{ Blaetter_Herbst1 }   
+                  interior_texture{ Blaetter_Herbst2 }}
+         scale 3 rotate y*37 translate <27,0,-55>}
 #include "trauerweide.inc"
-#declare Blaetter_3 = 
- texture{ pigment{ color rgbf< .16, .27,0,.3>*1}   
-          normal { bumps 0.15 scale 0.05 }
-          finish {ambient 0.1 diffuse 0.9 phong 0.9}
-        }
-#declare Blaetter_4 = 
- texture{ pigment{  color rgbf< .11,.19,0, 0.4>*1.05}   
-          normal { bumps 0.15 scale 0.05 }
-          finish {phong 0.9}
-        }
+        
 #include "black_oak_2.inc"        
 union { object { weeping_willow_13_stems texture{Rinde}}
          object { weeping_willow_13_leaves  double_illuminate
-                  texture{ Blaetter_3 }   
-                  interior_texture{ Blaetter_4 }}
+                  texture{ Blaetter_Herbst1 }   
+                  interior_texture{ Blaetter_Herbst2 }}
          rotate y*37 translate<60,0,-62>}
 union { object { weeping_willow_13_stems texture{Rinde}}
          object { weeping_willow_13_leaves  double_illuminate
-                  texture{ Blaetter_3 }   
-                  interior_texture{ Blaetter_4 }}
-         scale 3 rotate y*37 translate <-5,0,-31>}
+                  texture{ Blaetter_Herbst1 }   
+                  interior_texture{ Blaetter_Herbst2 }}
+         scale 3 rotate y*37 translate <5,0,-31>}
 union { object { black_oak_2_13_stems texture{Rinde}}
          object { black_oak_2_13_leaves  double_illuminate
-                  texture{ Blaetter_4 }   
-                  interior_texture{ Blaetter_3 }}
-         scale 3 rotate y*54 translate<-10,0,-122>}
+                  texture{ Blaetter_Herbst2 }   
+                  interior_texture{ Blaetter_Herbst1 }}
+         scale 3 rotate y*54 translate<10,0,-122>}
 
 union { object { black_oak_2_13_stems texture{Rinde}}
          object { black_oak_2_13_leaves  double_illuminate
-                  texture{ Blaetter_4 }   
-                  interior_texture{ Blaetter_3 }}
+                  texture{ Blaetter_Herbst2 }   
+                  interior_texture{ Blaetter_Herbst1 }}
          scale 5 rotate y*54 translate<90,0,-118>}
 union { object { eiche_13_stems texture{Rinde}}
          object { eiche_13_leaves  double_illuminate
-                  texture{ Blaetter_4 }   
-                  interior_texture{ Blaetter_3 }}
+                  texture{ Blaetter_Herbst2 }   
+                  interior_texture{ Blaetter_Herbst1 }}
          scale 4 rotate y*5 translate<60,0,-125>}
 union { object { black_oak_2_13_stems texture{Rinde}}
          object { black_oak_2_13_leaves  double_illuminate
-                  texture{ Blaetter_4 }   
-                  interior_texture{ Blaetter_3 }}
+                  texture{ Blaetter_Herbst2 }   
+                  interior_texture{ Blaetter_Herbst1 }}
          scale 4 rotate y*5 translate<0,0,-80>}
 union { object { black_oak_2_13_stems texture{Rinde}}
          object { black_oak_2_13_leaves  double_illuminate
-                  texture{ Blaetter_4 }   
-                  interior_texture{ Blaetter_3 }}
+                  texture{ Blaetter_Herbst2 }   
+                  interior_texture{ Blaetter_Herbst1 }}
          scale 4 rotate y*5 translate<95,0,-85>}
 //Kirschbaum
 #declare BOZO1 = pigment {
 	bozo
 	color_map {
-		[0  color rgbf<.16,.27,0,.3>*1]
-		[1  color rgbf<.31,.57,.25,.1>*0.9]
+		[0  color rgbf< .44, .11,.11,.3>*0.8]
+		[1  color rgbf< .77,.38,.06, 0.4>*0.8]
 	}
 	scale 0.04
 }
 #declare BOZO2 = pigment {
 	bozo
 	color_map {
-		[0 color rgbf< 0.2, 0.5, 0.0, 0.2>*0.25]
-		[1 color rgb<0.17, 0.58, 0.0>*0.5]
+		[0 color rgbf< .44, .11,.12,.3>*.25]
+		[1 color rgbf< .77,.38,.06, 0.4>*.5]
 	}
 	scale 0.04
 }
@@ -402,11 +383,10 @@ union { object { black_oak_2_13_stems texture{Rinde}}
 }
  #include "kirsche_wood.inc"
 #include "kirsche_foliage.inc"
-#include "kirsche_blossom.inc"
 
 union {
 object{FOLIAGE texture{LAUB}}
-object{BLOSSOM texture{pigment{color rgb 1}}}
+
 
 object{WOOD
 	texture {
@@ -424,8 +404,6 @@ translate<-10,0,-42>
 }
 union {
 object{FOLIAGE texture{LAUB}}
-object{BLOSSOM texture{pigment{color rgb 1}}}
-
 object{WOOD
 	texture {
 		onion
@@ -442,8 +420,6 @@ translate <37,0,-91>
 }
 union {
 object{FOLIAGE texture{LAUB}}
-object{BLOSSOM texture{pigment{color rgb 1}}}
-
 object{WOOD
 	texture {
 		onion
@@ -460,8 +436,6 @@ scale 22
 }
 union {
 object{FOLIAGE texture{LAUB}}
-object{BLOSSOM texture{pigment{color rgb 1}}}
-
 object{WOOD
 	texture {
 		onion
