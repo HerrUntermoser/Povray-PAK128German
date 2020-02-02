@@ -100,55 +100,48 @@ texture{ pigment{color MediumSeaGreen*0.8}
 union{
 difference {
 union{
-box {<0,0,0>,<70,56,50>}
+box {<0,0,0>,<70,20,50>}
 box {<-0.1,27,-0.1>,<70.1,27.8,50.1> pigment{color NewTan*0.6}}
 }
              
-//Abzug Dachflaechen
-box {<-1,40,0>,<23,60,35> rotate <320,0,0> translate <0,8,23.5>}
-box {<47,40,0>,<71,60,35> rotate <320,0,0> translate <0,8,23.5>}
-box {<-1,40,0>,<23,60,35> rotate <40,0,0> translate <0,30,-1>}
-box {<47,40,0>,<71,60,35> rotate <40,0,0> translate <0,30,-1>}
-box {<0,0,-1>,<18,7,51> rotate <0,0,35> translate <20,45.5,0>}
-box {<0,0,-1>,<18,7,51> rotate <0,0,325> translate <35,56,0>}                      
 //Innenraum
-box {<0.5,0.5,0.5>,<69.5,57.5,49.5>}
+box {<0.5,0.5,0.5>,<69.5,34,49.5>}
 //Fensteraussparungen EG
 box {<0,0,0>,<5,8.5,1> translate <10,4,-0.2>}
 box {<0,0,0>,<5,8.5,1> translate <32.75,4,-0.2>}
 box {<0,0,0>,<5,8.5,1> translate <55,4,-0.2>}
 //Fensteraussparungen 1.
-box {<0,0,0>,<5,8.5,1> translate <10,22,-0.4>}
+//box {<0,0,0>,<5,8.5,1> translate <10,22,-0.4>}
 box {<0,0,0>,<5,8.5,1> translate <32.75,22,-0.4>}
-box {<0,0,0>,<5,8.5,1> translate <55,22,-0.4>}
+//box {<0,0,0>,<5,8.5,1> translate <55,22,-0.4>}
 //Fensteraussparungen DG
 box {<0,0,0>,<5,8.5,1> translate <32.75,38,-0.2>}
 //Fensteraussparungen links
 box {<0,0,0>,<1,8.5,5> translate <-0.2,4,12>}
 box {<0,0,0>,<1,8.5,5> translate <-0.2,4,33>}
 //1.            
-box {<0,0,0>,<1,8.5,5> translate <-0.4,22,12>}
-box {<0,0,0>,<1,8.5,5> translate <-0.4,22,33>}
+//box {<0,0,0>,<1,8.5,5> translate <-0.4,22,12>}
+//box {<0,0,0>,<1,8.5,5> translate <-0.4,22,33>}
 //DG            
-box {<0,0,0>,<1,8.5,5> translate <-0.2,38,12>}
-box {<0,0,0>,<1,8.5,5> translate <-0.2,38,33>}
+//box {<0,0,0>,<1,8.5,5> translate <-0.2,38,12>}
+//box {<0,0,0>,<1,8.5,5> translate <-0.2,38,33>}
 //Fensteraussparungen rechts
-box {<0,0,0>,<1,8.5,5> translate <69.2,4,12>}
-box {<0,0,0>,<1,8.5,5> translate <69.2,4,33>}
+//box {<0,0,0>,<1,8.5,5> translate <69.2,4,12>}
+//box {<0,0,0>,<1,8.5,5> translate <69.2,4,33>}
 //1.            8.5
-box {<0,0,0>,<1,8.5,5> translate <69.4,22,12>}
-box {<0,0,0>,<1,8.5,5> translate <69.4,22,33>}
+//box {<0,0,0>,<1,8.5,5> translate <69.4,22,12>}
+//box {<0,0,0>,<1,8.5,5> translate <69.4,22,33>}
 //2.            8.5
-box {<0,0,0>,<1,8.5,5> translate <69.2,38,12>}
-box {<0,0,0>,<1,8.5,5> translate <69.2,38,33>}
+//box {<0,0,0>,<1,8.5,5> translate <69.2,38,12>}
+//box {<0,0,0>,<1,8.5,5> translate <69.2,38,33>}
 //Fensteraussparungen EG-R
 box {<0,0,49>,<5,8.5,50> translate <10,4,0.2>}
 box {<0,0,49>,<7,10,50> translate <32,0.5,0.2>}
 box {<0,0,49>,<5,8.5,50> translate <55,4,0.2>}
 //Fensteraussparungen 1.R
-box {<0,0,49>,<5,8.5,50> translate <10,22,0.4>}
-box {<0,0,49>,<5,10,50> translate <32.75,20,0.4>}
-box {<0,0,49>,<5,8.5,50> translate <55,22,0.4>}
+//box {<0,0,49>,<5,8.5,50> translate <10,22,0.4>}
+//box {<0,0,49>,<5,10,50> translate <32.75,20,0.4>}
+//box {<0,0,49>,<5,8.5,50> translate <55,22,0.4>}
 //Fensteraussparungen DG-R
 box {<0,0,49>,<5,8.5,50> translate <32.75,38,0.2>}
 }
@@ -158,8 +151,7 @@ box {<-0.3,-0.05,-0.3>,<70.3,0.7,50.3> texture {T_Stone31 scale 0.05}}
 box {<-0.3,16.3,-0.3>,<70.3,16.7,50.3> texture {pigment{color NewTan*0.8}}}
 box {<-0.5,16.7,-0.5>,<70.5,16.9,50.5> texture {pigment{color NewTan*0.5} normal {bumps 0.5 scale 0.08}}}
 box {<-0.7,16.9,-0.7>,<70.7,17.2,50.7> texture {pigment{color NewTan*0.7} normal {bumps 0.5 scale 0.08}}}
-//Ziersockel 2.
-box {<-0.2,37,-0.2>,<70.2,37.7,50.2> texture {pigment{color NewTan*0.6} normal {bumps 0.3 scale 0.08}}}
+
  texture {Wand_Farbe_1}
  }
 #declare Giebel = prism {0,1,4,<0,0>,<12,0>,<6,5>,<0,0>}
@@ -185,38 +177,29 @@ object {Fenster5x8_5Z translate <30,4,-100>}
 object {Fenster5x8_5Z translate <52.75,4,-100>}
 object {Fenster5x8_5Z translate <75,4,-100>}
 //Fenster 1.
-object {Fenster5x8_5Z translate <30,22,-100>}
-object {Fenster5x8_5Z translate <52.75,22,-100>}
-object {Fenster5x8_5Z translate <75,22,-100>}
+//object {Fenster5x8_5Z translate <30,22,-100>}
+//object {Fenster5x8_5Z translate <52.75,22,-100>}
+//object {Fenster5x8_5Z translate <75,22,-100>}
 //Fenster DG
-object {Fenster5x8_5Z translate <52.75,38,-100>}
+//object {Fenster5x8_5Z translate <52.75,38,-100>}
 //Fenster EG-R
 object {Fenster5x8_5Z rotate <0,180,0> translate <35,4,-50.2>}
 object {Fenster5x8_5Z rotate <0,180,0> translate <80,4,-50.2>}
-//Fenster 1. R
-object {Fenster5x8_5Z rotate <0,180,0> translate <35,22,-50.2>}
-object {Fenster5x8_5Z rotate <0,180,0>translate <80,22,-50.2>}
 //Fenster DG-R
-object {Fenster5x8_5Z rotate <0,180,0> translate <57.75,38,-50.2>}
+object {Fenster5x8_5Z rotate <0,180,0> translate <57.75,22,-50.2>}
 //Fenster EG-links
 object {Fenster5x8_5Z rotate <0,90,0> translate <20,4,-83>}
 object {Fenster5x8_5Z rotate <0,90,0> translate <20,4,-62>}
-//Fenster 1-links
-object {Fenster5x8_5Z rotate <0,90,0> translate <20,22,-83>}
-object {Fenster5x8_5Z rotate <0,90,0> translate <20,22,-62>}
 //Fenster DG-links
-object {Fenster5x8_5Z rotate <0,90,0> translate <20,38,-83>}
-object {Fenster5x8_5Z rotate <0,90,0> translate <20,38,-62>}
+//object {Fenster5x8_5Z rotate <0,90,0> translate <20,22,-83>}
+//object {Fenster5x8_5Z rotate <0,90,0> translate <20,22,-62>}
 
 //Fenster EG-rechts
 object {Fenster5x8_5Z rotate <0,-90,0> translate <90,4,-88>}
 object {Fenster5x8_5Z rotate <0,-90,0> translate <90,4,-67>}
-//Fenster 1-rechts
-object {Fenster5x8_5Z rotate <0,-90,0> translate <90,22,-88>}
-object {Fenster5x8_5Z rotate <0,-90,0> translate <90,22,-67>}
 //Fenster DG-rechts
-object {Fenster5x8_5Z rotate <0,-90,0> translate <90,38,-88>}
-object {Fenster5x8_5Z rotate <0,-90,0> translate <90,38,-67>}
+//object {Fenster5x8_5Z rotate <0,-90,0> translate <90,22,-88>}
+//object {Fenster5x8_5Z rotate <0,-90,0> translate <90,22,-67>}
 //Haustür
 union{
 difference{
@@ -246,13 +229,13 @@ object {SDR translate<43,-1,-48>}
 object {SDR translate<67,-1,-48>}
 //Dachflaechen
 //vorne
-/*
+
 #declare XL = 19;
 #declare endx = 90;
 
 #while (XL <= endx)
 difference{
-object{Dachziegelengobiert (33) rotate x*50 translate <XL,40,-101> texture{pigment{gradient y color_map {[0.0 color Scarlet*0.7]
+object{Dachziegelengobiert (33) rotate x*50 translate <XL,30,-101> texture{pigment{gradient y color_map {[0.0 color Scarlet*0.7]
                                                                                                 [0.9 color Scarlet*0.5]
                                                                                                 [0.9 color rgb 0.1]
                                                                                                 [1 color rgb 0.1]
@@ -268,7 +251,7 @@ box {<43,35,-102.5>,<66,50,-80>}
 
 #while (XLH <= endxLH)
 difference {
-object{Dachziegelengobiert (36) rotate x*-50 translate <XLH,38.5,-48> texture{pigment{gradient y color_map {[0.0 color Scarlet]
+object{Dachziegelengobiert (36) rotate x*-50 translate <XLH,28.5,-48> texture{pigment{gradient y color_map {[0.0 color Scarlet]
                                                                                                 [0.9 color Scarlet*0.5]
                                                                                                 [0.9 color rgb 0.1]
                                                                                                 [1 color rgb 0]
@@ -328,7 +311,7 @@ texture{pigment{brick
 box{<0.3,2,0.3>,<3.3,7.5,2.7> pigment {color rgb 0}}
 box{<3.6,2,0.3>,<6.6,7.5,2.7> pigment {color rgb 0}}
 box{<6.9,2,0.3>,<11.7,7.5,2.7> pigment {color rgb 0}}
-translate<50,57,-76>}*/
+translate<50,57,-76>}
 //Mauer
 
 //Asphalt in der Einfahrt
