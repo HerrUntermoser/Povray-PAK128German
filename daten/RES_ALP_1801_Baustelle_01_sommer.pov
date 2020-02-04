@@ -246,7 +246,11 @@ object{ Roof_0 (   45,    // Roof___Angle1, // roof angle
                 ) //------------------------------------------------------  
  scale <1,0.7,1>       
 translate<-0,19.5,-115>}
-
+//Sandhaufen & Weg================================
+ height_field{tga "sandhaufen_hf.tga" smooth scale <35,4,8> translate <25,0,-34> pigment{image_map { jpeg "Sand_Braun_Mittel.jpg" map_type 0 interpolate 2} rotate x*90}}
+ height_field{png "Mount2.png" smooth scale <18,6,24> rotate y*17 translate <42,-0.2,-42> pigment{image_map { jpeg "Sand_Braun_Mittel.jpg" map_type 0 interpolate 2} rotate x*90}}
+height_field{png "kegel_grauschwarz.png" smooth scale <18,6,34> rotate y*23 translate <70,-0.2,-104> pigment{image_map { jpeg "kies_grob.jpg" map_type 0 interpolate 2} rotate x*90 scale <8,1,5>}}
+//height_field{png "Mount1.png" smooth scale <18,3,12> rotate y*-14 translate <58,-0.2,-91> pigment{image_map { jpeg "kies_grob_gelbweiss.jpg" map_type 0 interpolate 2} rotate x*90 scale 1}}
  /*
 #include "kirsche_wood.inc"
 #include "kirsche_foliage.inc"
@@ -321,7 +325,7 @@ scale 22
 translate <92,0,-80>
 }*/
 //Bodenplatte
-object {bodenplatte texture { pigment{ /*image_map { png "grass.png" map_type 0 interpolate 2}*/ color rgb 1} rotate <90,0,0> scale 5 finish {ambient 0}}}
+object {bodenplatte texture { pigment{ image_map {  jpeg "Boden-Erde-Steine.jpg" map_type 0 interpolate 2}} rotate <90,0,0> scale 5 finish {ambient 0}}}
 
 //Ende Bodenplatte
 
