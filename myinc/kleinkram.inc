@@ -164,5 +164,21 @@ translate<-.45,7,-.45> texture{pigment{color rgb <.17,.25,.31>*0.5}finish{F_Meta
 }
 texture {pigment {color rgb 0.2} finish{F_MetalC}}}
 //============================
+#declare schuttwanne = difference{
+prism{0,5,5,
+		<0,0>,
+		<1,0>,
+		<1.5,.7>,
+		<-.5,.7>,
+		<0,0>}
+prism{.2,4.8,5,
+		<0,0>,
+		<1,0>,
+		<1.5,.7>,
+		<-.5,.7>,
+		<0,0> translate <0,0,.1>}
+}
+
+//============================
 #version kleinkram_INC_Temp;
 #end
