@@ -30,6 +30,7 @@ global_settings{ assumed_gamma 1.1 }
 #include "shapes3.inc"
 #include "Roof_0.inc"
 #include "basis.inc"
+#include "kleinkram.inc"
 #declare Camera_0 = camera{
   orthographic
   location<100, 81.4, -100>  
@@ -247,89 +248,40 @@ object{ Roof_0 (   45,    // Roof___Angle1, // roof angle
  scale <1,0.7,1>       
 translate<-0,19.5,-115>}
 //Sandhaufen & Weg================================
- height_field{tga "sandhaufen_hf.tga" smooth scale <35,4,8> translate <25,0,-34> pigment{image_map { jpeg "Sand_Braun_Mittel.jpg" map_type 0 interpolate 2} rotate x*90}}
+ height_field{tga "sandhaufen_hf.tga" smooth scale <35,4,12> translate <25,0,-34> pigment{image_map { jpeg "Sand_Braun_Mittel.jpg" map_type 0 interpolate 2} rotate x*90}}
  height_field{png "Mount2.png" smooth scale <18,6,24> rotate y*17 translate <42,-0.2,-42> pigment{image_map { jpeg "Sand_Braun_Mittel.jpg" map_type 0 interpolate 2} rotate x*90}}
 height_field{png "kegel_grauschwarz.png" smooth scale <18,6,34> rotate y*23 translate <70,-0.2,-104> pigment{image_map { jpeg "kies_grob.jpg" map_type 0 interpolate 2} rotate x*90 scale <8,1,5>}}
-//height_field{png "Mount1.png" smooth scale <18,3,12> rotate y*-14 translate <58,-0.2,-91> pigment{image_map { jpeg "kies_grob_gelbweiss.jpg" map_type 0 interpolate 2} rotate x*90 scale 1}}
- /*
+//Kleinkram
+object{schuttwanne rotate x*-90 rotate y*37 translate<70,0,-24> texture{Sandalwood}}
+object{schuttwanne rotate x*-90 rotate y*-12 translate<65,0,-30> texture{Sandalwood}}
+object{schuttwanne rotate x*-90 translate<68,0,-17> texture{Sandalwood}}
+
 #include "kirsche_wood.inc"
 #include "kirsche_foliage.inc"
 
 union {
-object{FOLIAGE texture{LAUB}}
+object{FOLIAGE texture{Laub_Sommer1} double_illuminate}
 
 object{WOOD
 	texture {
 		onion
 		texture_map {
-			[0 RINDE scale <1/571.1, 1/5033.684, 1/571.1>]
-			[0.3 RINDE scale <5.253021E-4, 5.9598497E-5, 5.253021E-4>]
-			[1 RINDE scale <1.751007E-4, 1.9866166E-5, 1.751007E-4>]
+			[0 Rinde scale <1/571.1, 1/5033.684, 1/571.1>]
+			[0.3 Rinde scale <5.253021E-4, 5.9598497E-5, 5.253021E-4>]
+			[1 Rinde scale <1.751007E-4, 1.9866166E-5, 1.751007E-4>]
 		}
 		scale <571.1, 5033.684, 571.1>/817.99994
 	}
 }
-scale 20
-translate <30,0,-125>
+scale 28
+translate <-6,0,-30>
 }
-
-union {
-object{FOLIAGE texture{LAUB}}
-
-object{WOOD
-	texture {
-		onion
-		texture_map {
-			[0 RINDE scale <1/571.1, 1/5033.684, 1/571.1>]
-			[0.3 RINDE scale <5.253021E-4, 5.9598497E-5, 5.253021E-4>]
-			[1 RINDE scale <1.751007E-4, 1.9866166E-5, 1.751007E-4>]
-		}
-		scale <571.1, 5033.684, 571.1>/817.99994
-	}
-}
-scale 20
-translate <81,-1, -30>
-}
-union {
-object{FOLIAGE texture{LAUB}}
-
-object{WOOD
-	texture {
-		onion
-		texture_map {
-			[0 RINDE scale <1/571.1, 1/5033.684, 1/571.1>]
-			[0.3 RINDE scale <5.253021E-4, 5.9598497E-5, 5.253021E-4>]
-			[1 RINDE scale <1.751007E-4, 1.9866166E-5, 1.751007E-4>]
-		}
-		scale <571.1, 5033.684, 571.1>/817.99994
-	}
-}
-scale 22
-translate <80,0,-130>
-}
-union {
-object{FOLIAGE texture{LAUB}}
-
-object{WOOD
-	texture {
-		onion
-		texture_map {
-			[0 RINDE scale <1/571.1, 1/5033.684, 1/571.1>]
-			[0.3 RINDE scale <5.253021E-4, 5.9598497E-5, 5.253021E-4>]
-			[1 RINDE scale <1.751007E-4, 1.9866166E-5, 1.751007E-4>]
-		}
-		scale <571.1, 5033.684, 571.1>/817.99994
-	}
-}
-scale 22
-translate <92,0,-80>
-}*/
 //Bodenplatte
 object {bodenplatte texture { pigment{ image_map {  jpeg "Boden-Erde-Steine.jpg" map_type 0 interpolate 2}} rotate <90,0,0> scale 5 finish {ambient 0}}}
 
 //Ende Bodenplatte
 
-#declare Richtung = 0;
+#declare Richtung = 2;
 #switch ( Richtung )
 #case (0)
 //sued

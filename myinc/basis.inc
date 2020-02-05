@@ -19,6 +19,62 @@
 #declare TTrans = texture {pigment{color Clear}}
 #declare BT = texture {pigment {color rgb 0.2}}
 #declare BalkonPfosten = texture_map{[0.0 T_Wood12][0.6 T_Wood26][0.7 T_Wood12][0.7 TTrans][0.9 BT][1.0 BT]}
+//======================Baumtexturen==================================
+#declare Rinde = texture {
+	pigment {
+		granite
+		cubic_wave
+		
+		color_map {
+			[0 color rgb <0.35, 0.25, 0.17>]
+			[0.35 color rgb <0.49019, 0.34117, 0.21176>]
+			[0.5 color rgb <0.49019, 0.34117, 0.21176>*2]
+			[0.65 color rgb <0.49019, 0.34117, 0.21176>]
+			[1 color rgb <0.35, 0.25, 0.17>]
+		}
+		//color_map {[0 color rgb 1][1 color rgb 0.8]}
+		scale <1.0, 10.0, 1.0>*3
+	}
+	finish {
+		phong -1.0/5 phong_size 4
+	}
+}
+#declare Rinde2 = 
+ texture{ pigment{color rgb< 0.70, 0.56, 0.43>*0.25 } 
+          normal { bumps 1.00 scale <0.025,0.075,0.025> }
+          finish { phong 0.2 reflection 0.00}         
+        }
+#declare Rinde_winter = texture {
+	pigment {
+		granite
+		cubic_wave
+		color_map {[0 color rgb 1][1 color rgb 0.8]}
+		scale <1.0, 10.0, 1.0>*3
+	}
+	finish {
+		phong -1.0/5 phong_size 4
+	}
+}
+#declare Blaetter_Sommer1 = 
+ texture{ pigment{ color rgb< .31, .57, .25>*0.9}   
+          normal { bumps 0.15 scale 0.05 }
+          finish {ambient 0.1 diffuse 0.9 phong 0.9}
+        }
+#declare Blaetter_Sommer2 = 
+ texture{ pigment{  color rgbf< 0.2, 0.5, 0.0, 0.2>*0.25}   
+          normal { bumps 0.15 scale 0.05 }
+          finish {ambient 0.1 diffuse 0.9 phong 0.9}
+        }
+#declare Blaetter_Sommer3 = 
+ texture{ pigment{ color rgbf< .16, .27,0,.3>*1}   
+          normal { bumps 0.15 scale 0.05 }
+          finish {ambient 0.1 diffuse 0.9 phong 0.9}
+        }
+#declare Blaetter_Sommer4 = 
+ texture{ pigment{  color rgbf< .11,.19,0, 0.4>*1.05}   
+          normal { bumps 0.15 scale 0.05 }
+          finish {phong 0.9}
+        }
 #declare Blaetter_Herbst1 = 
  texture{ pigment{ color rgbf< .4,.11,.11,.3>*.8}   
           normal { bumps 0.15 scale 0.05 }
@@ -38,6 +94,39 @@
           normal { bumps 0.15 scale 0.05 }
           finish {diffuse 0.8}
         }
+#declare Laub_SommerA = pigment {
+	bozo
+	color_map {
+		[0  color rgbf<.16,.27,0,.3>*1]
+		[1  color rgbf<.31,.57,.25,.1>*0.9]
+	}
+	scale 0.04
+}
+#declare Laub_SommerB = pigment {
+	bozo
+	color_map {
+		[0 color rgbf< 0.2, 0.5, 0.0, 0.2>*0.25]
+		[1 color rgb<0.17, 0.58, 0.0>*0.5]
+	}
+	scale 0.04
+}
+
+#declare Laub_Sommer1 = texture {
+	pigment {
+		gradient y
+		cubic_wave
+		turbulence 0.0
+		omega 0.0
+		pigment_map {
+			[0.0 Laub_SommerA]
+			[1 Laub_SommerB]
+		}
+		scale 1006.8
+	}
+	finish {
+		phong 0.4*0.0 phong_size 20*0.0
+	}
+}
 //=======================================================
 #declare bodenplatte = box { <-20,-0.1,-134>,<100,0,-15>}
 //=====================================================
