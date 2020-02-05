@@ -1,13 +1,13 @@
 // PoVRay 3.7
 // author: daniel_martin@gmx.at
-#version 3.7; // 3.6
-#declare Radiosity_ON = 0; 
+#version 3.7;
+#declare Radiosity_ON = 1; 
 #if (Radiosity_ON = 1 )
 global_settings{
   ambient_light 1
   assumed_gamma 1.0
   radiosity {
-         /adc_bailout 2
+         adc_bailout 2
           error_bound 0.6
           count 30
           brightness 0.55
@@ -62,6 +62,8 @@ camera {Camera_0}
 
 // sun -------------------------------------------------------------------
 light_source{<0,2500,-2500> color rgb < 0.9921569,  0.9137255,  0.827451 >}  // sunlight
+//Zusätzliche Lichtquelle im Gebäude
+light_source{<35,10 ,-50>color White*.9}
 #if (Radiosity_ON = 1)
 background {color rgbt 1}
 #else
@@ -281,7 +283,7 @@ object {bodenplatte texture { pigment{ image_map {  jpeg "Boden-Erde-Steine.jpg"
 
 //Ende Bodenplatte
 
-#declare Richtung = 2;
+#declare Richtung = 0;
 #switch ( Richtung )
 #case (0)
 //sued
