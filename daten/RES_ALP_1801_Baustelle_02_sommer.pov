@@ -1,7 +1,7 @@
 // PoVRay 3.7
 // author: daniel_martin@gmx.at
 #version 3.7;
-#declare Radiosity_ON = 0; 
+#declare Radiosity_ON = 1; 
 #if (Radiosity_ON = 1 )
 global_settings{
   ambient_light 1
@@ -55,7 +55,7 @@ look_at<0, 0, 0>
                             location  <30 , 60 ,-140>
                             right x*image_width/image_height
 							look_at <30,60,0>}
-camera {Camera_2}
+camera {Camera_0}
 
 // sun -------------------------------------------------------------------
 light_source{<0,2500,-2500> color rgb < 0.9921569,  0.9137255,  0.827451 >}  // sunlight
@@ -229,7 +229,7 @@ difference{
 box {<-0.2,37,-0.2>,<70.2,37.7,50.2> texture {pigment{color NewTan*0.6} normal {bumps 0.3 scale 0.08}}}
 box {<.5,36,.5>,<69.5,38,49.5>}
 }
-box {<0.5,35,0.5>,<69.5,35.5,49.5> pigment{color NewTan*.6}}
+box {<0.5,35,0.5>,<69.5,35.5,49.5> texture{pigment{bozo turbulence 0.5 color_map{[0 color rgb 0.8][1 color rgb 0.9]} scale <.5,1,.5>} finish{ambient .1}}}
  texture {Wand_Farbe_1}
  }
 
@@ -349,29 +349,8 @@ box{<0,0,0>,<5.5,6,12>
  box{<2,4,3>,<4.5,7,12>}
    texture{Ziegelstapel}
  rotate y*-4 translate<89,0,-28> }
-/*
-#include "kirsche_wood.inc"
-#include "kirsche_foliage.inc"
-
-union {
-object{FOLIAGE texture{Laub_Sommer1} double_illuminate}
-
-object{WOOD
-	texture {
-		onion
-		texture_map {
-			[0 Rinde scale <1/571.1, 1/5033.684, 1/571.1>]
-			[0.3 Rinde scale <5.253021E-4, 5.9598497E-5, 5.253021E-4>]
-			[1 Rinde scale <1.751007E-4, 1.9866166E-5, 1.751007E-4>]
-		}
-		scale <571.1, 5033.684, 571.1>/817.99994
-	}
-}
-scale 28
-translate <-6,0,-30>
-}*/
 //Bodenplatte
-object {bodenplatte texture { pigment{ image_map {  jpeg "Boden-Erde-Steine.jpg" map_type 0 interpolate 2}} rotate <90,0,0> scale 20 finish {ambient 0}}}
+object {bodenplatte texture { pigment{ image_map {  jpeg "kies_grob_gelbweiss.jpg" map_type 0 interpolate 2}} rotate <90,0,0> scale 40 finish {ambient 0.1}}}
 
 //Ende Bodenplatte
 
