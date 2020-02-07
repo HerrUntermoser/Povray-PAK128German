@@ -37,8 +37,8 @@ global_settings{ assumed_gamma 1.1 }
 look_at<0, 0, 0>
 }
 #declare Camera_1 = camera {perspective angle 90   // rueckseite
-                            location  <20 ,65.0 ,30.0>
-                            look_at   <20 ,65,0>}
+                            location  <20 ,30 ,30.0>
+                            look_at   <20 ,30,0>}
 #declare Camera_2 = camera {perspective angle 90//rechts
                             location  <120 , 40 ,-60>
                             right x*image_width/image_height
@@ -88,11 +88,42 @@ plane { <0,1,0>, 0  hollow // normal vector, distance to zero ----
 #declare BalkonPfosten = texture_map{[0.0 T_Wood22][0.6 T_Wood15][0.7 T_Wood22][0.7 TTrans][0.9 BT][1.0 BT]}
 #declare HT = texture {pigment {color DarkSlateBlue}}
 #declare Wand_Farbe_1 =
-texture{ pigment{color MediumSeaGreen*0.8}
-         normal {cells 0.2 scale 0.02}
-        finish {ambient MediumSeaGreen*0.3}
+texture{ pigment{ ripples scale 0.5 turbulence 0.75 color_map{[0 color rgb <.36,.54,.66>][.7 color rgb <.36,.54,.66>*.5][.7 color rgb <.29,.43,.52>][1 color rgb <.29,.43,.52>*.5]} }
+         normal {cells .3 scale 0.03}
+        finish {ambient 0.1}
        }
 #declare FirstTextur = texture{pigment{ gradient x color_map{ [0.0 color Scarlet*0.4][0.9 color Scarlet][0.9 color rgb 0.2][1.0 color rgb 0.2]}}scale 2 finish{ambient 0}}
+//===============================================
+#declare g_beet = union{difference{box {<0,0,0>,<8,1,18>}box {<0.2,0.5,0.2>,<7.8,1.5,17.8>} texture{T_Wood3 scale 0.4 rotate x*90}}box {<0.2,0.5,0.2>,<7.8,0.6,17.8>texture{ pigment{bozo turbulence 0.3 color_map{[0.0 color rgb <0.4,0.26,0.13>*0.5][0.5 color rgb <0.2,0.13,0.07>*0.2][1 color rgb <0.18,0.12,0.06>*0.5]} }normal { bozo 3 scale 0.05} finish { diffuse 0.9}}}
+#declare Random_1 = seed (2655);
+#declare Random_2 = seed (1153);
+//--------------------------------
+union{
+ // outer loop -------------------
+ #declare NrX = 0.5;  // start x
+ #declare EndNrX =  3.5;// end   x
+ #while (NrX< EndNrX+1)
+  // inner loop ------------------
+  #declare NrZ = 0.5;     // start z
+  #declare EndNrZ =  8; // end   z
+  #while (NrZ< EndNrZ+1)
+
+  sphere{ <0,0,0>, 0.25
+    texture{ pigment{color DarkGreen}
+             finish {phong 0.3}
+           } // end of texture
+    translate < 2*NrX+1.5*(-0.5+rand(Random_1)),0.7,2*NrZ+1.5*(-0.5+rand(Random_2))>
+  } // end of sphere --------------
+
+  #declare NrZ = NrZ + 1; // next Nr z
+  #end // -------------- end of loop z
+  // end inner loop
+ #declare NrX = NrX + 1;  // next Nr x
+ #end // --------------- end of loop x
+// end of outer loop
+}
+   }
+//===========================================================
 #declare Haus_Roh =
 union{
 difference {
@@ -147,8 +178,8 @@ box {<-0.7,16.9,-0.7>,<70.7,17.2,50.7> texture {pigment{color NewTan*0.7} normal
  }
 
 
-#declare WDR = cylinder {<0,0,0>,<25,0,0>,0.5 texture {T_Brass_1A}}
-#declare SDR = cylinder {<0,0,0>,<0,40,0>,0.4 texture {T_Brass_1A}}
+#declare WDR = cylinder {<0,0,0>,<26,0,0>,0.5 texture {T_Brass_1A}}
+#declare SDR = cylinder {<0,0,0>,<0,34,0>,0.4 texture {T_Brass_1A}}
 #declare Zaun_Saeule = box{<0,0,0>,<1.5,6.5,1.5> texture{T_Stone24} texture{pigment{brick 
                 White*0.5
                 Clear
@@ -194,23 +225,18 @@ box {<2.8,2,0.4>,<4.2,8,0.9> texture{NBoldglass}}
 }
 sphere {<0,0,0>,0.35 translate <0.4,4.5,0.5> texture{T_Copper_2A}}
 cylinder{<0,0,0>,<1,0,0>,0.29 translate <0.3,4.5,0.5> texture{T_Brass_1A}}
-prism {0,9,4
-        <0,0>,
-        <4,0>,
-        <0,1.5>,
-        <0,0> rotate x*-90 rotate y*90 translate <8,10,0>texture {T_Wood2}}
 cylinder {<0,0,0>,<0,0,-2.9>,0.2 rotate x*30 translate <-0.3,9,0> texture {New_Brass}}
 cylinder {<0,0,0>,<0,0,-2.9>,0.2 rotate x*30 translate <7.1,9,0> texture {New_Brass}}
 rotate y*180
 translate <59,0.5,-50>}
 //Dachrinnen
-object {WDR translate<19,40,-101>}
-object {WDR translate<65,40,-101>}
+object {WDR translate<17,20.5,-102>}
+object {WDR translate<65,20.5,-102>}
 object {SDR translate<43,0,-100.5>}
 object {SDR translate<67,0,-100.5>}
 
-object {WDR translate<19,38.5,-48>}
-object {WDR translate<65,38.5,-48>}
+object {WDR translate<17,18.5,-47>}
+object {WDR translate<65,18.5,-47>}
 object {SDR translate<43,-1,-48>}
 object {SDR translate<67,-1,-48>}
 //Dachflaechen
@@ -221,7 +247,7 @@ object {SDR translate<67,-1,-48>}
 
 #while (XL <= endx)
 difference{
-object{Dachziegelengobiert (33) rotate x*50 translate <XL,20,-101> texture{pigment{gradient y color_map {[0.0 color Scarlet*0.7]
+object{Dachziegelengobiert (33) rotate x*50 translate <XL,20.3,-101> texture{pigment{gradient y color_map {[0.0 color Scarlet*0.7]
                                                                                                 [0.9 color Scarlet*0.5]
                                                                                                 [0.9 color rgb 0.1]
                                                                                                 [1 color rgb 0.1]
@@ -237,7 +263,7 @@ box {<43,21,-102.5>,<66,30,-80>}
 
 #while (XLH <= endxLH)
 difference {
-object{Dachziegelengobiert (36) rotate x*-50 translate <XLH,18.5,-48> texture{pigment{gradient y color_map {[0.0 color Scarlet]
+object{Dachziegelengobiert (36) rotate x*-50 translate <XLH,18.8,-48> texture{pigment{gradient y color_map {[0.0 color Scarlet]
                                                                                                 [0.9 color Scarlet*0.5]
                                                                                                 [0.9 color rgb 0.1]
                                                                                                 [1 color rgb 0]
@@ -262,7 +288,7 @@ object{Dachziegelengobiert (20) rotate y*90 rotate z*-55 translate <39,30,ZV> te
  
                                                                                                }}}
 //Dachfirst Vorne nach hinten
-cylinder{<0,0,-31>,<0,0,23>,0.5 translate <55,41.5,-70> texture{FirstTextur rotate y*90}}
+cylinder{<0,0,-31>,<0,0,23>,0.5 translate <55,41.7,-70> texture{FirstTextur rotate y*90}}
 }
 #declare ZV = ZV + 2.8;
 #end
@@ -298,10 +324,33 @@ texture{pigment{brick
 box{<0.3,2,0.3>,<3.3,7.5,2.7> pigment {color rgb 0}}
 box{<3.6,2,0.3>,<6.6,7.5,2.7> pigment {color rgb 0}}
 box{<6.9,2,0.3>,<11.7,7.5,2.7> pigment {color rgb 0}}
-translate<50,57,-76>}
-//Mauer
+translate<50,40,-76>}
+box{<0,0,0>,<14,.05,35> pigment{image_map{png "dirtwall.png" map_type 0 interpolate 2}rotate x*90 scale <10,1,10>} translate <50,0,-50>}
+//===================================
+//Holzstoss==========================================
+#declare startz = -105;
+#declare endz = -80;
+#while (startz <= endz)
+object{holzstoss_basis rotate y*-90 translate <19,0,startz>}
+#declare startz = startz + 1.2;
+#end
+#declare startz = -103;
+#declare endz = -81;
+#while (startz <= endz)
+object{holzstoss_basis rotate y*-90 translate <19,0.8,startz>}
+#declare startz = startz + 1.2;
+#end
+#declare startz = -102;
+#declare endz = -82;
+#while (startz <= endz)
+object{holzstoss_basis rotate y*-90 translate <19,1.6,startz>}
+#declare startz = startz + 1.2;
+#end
+//Gemüsebeete========================================
 
-//Asphalt in der Einfahrt
+object {g_beet translate<-15,-0.1,-60>}
+object {g_beet translate<-16,-0.1,-80>}
+object {g_beet translate<-16,-0.1,-100>}
 
 //Bäume
 
@@ -340,42 +389,7 @@ translate<50,57,-76>}
 		phong -1.0/5 phong_size 4
 	}
 }
-#declare BOZO1 = pigment {
-	bozo
-	color_map {
-		//[0 color rgb <0,0.502,0>]
-		[0 color rgb 1]
-		//[1 color rgb <0.376,0.349,0.153>]
-		[1 color rgb 0.9]
-	}
-	scale 0.04
-}
-#declare BOZO2 = pigment {
-	bozo
-	color_map {
-		//[0 color rgb<0.176, 0.349, 0.153>]
-		[0 color rgb<1, 0.9,1>]
-		//[1 color rgb<0.149, 0.298,0.132>]
-		[1 color rgb<1, 0.98,1>]
-	}
-	scale 0.04
-}
-#declare LAUB = texture {
-	pigment {
-		gradient y
-		cubic_wave
-		turbulence 0.0
-		omega 0.0
-		pigment_map {
-			[0.0 BOZO1]
-			[1 BOZO2]
-		}
-		scale 597.0447
-	}
-	finish {
-		phong 0.1 phong_size 10*0.1
-	}
-}
+
 /*#include "kiefer.inc"
 union {
 object{FOLIAGE}
@@ -394,10 +408,10 @@ translate <20,0,-40>
 }*/
 //Bodenplatte
 
-object {bodenplatte texture { pigment{/* image_map { jpeg "kies_sehrgrob.jpg" map_type 0 interpolate 2}} rotate <90,0,0> scale 5*/ color White} finish {ambient 0}}}
+object {bodenplatte texture { pigment{ image_map { jpeg "grasstex_herbst.jpg" map_type 0 interpolate 2} rotate <90,0,0> scale 30} finish {ambient 0}}}
 //Ende Bodenplatte
 
-#declare Richtung = 3;
+#declare Richtung = 0;
 #switch ( Richtung )
 #case (0)
 //sued
