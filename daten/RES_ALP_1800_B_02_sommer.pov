@@ -31,14 +31,15 @@ global_settings{ assumed_gamma 1.1 }
 #include "woods.inc"
 #include "basis.inc"
 #include "kleinkram.inc"
+#include "Lampe02_geom.inc"
   #declare Camera_0 = camera{
   orthographic
   location<100, 81.4, -100>  
 look_at<0, 0, 0>
 }
 #declare Camera_1 = camera {perspective angle 90   // rueckseite
-                            location  <20 ,30 ,30.0>
-                            look_at   <20 ,30,0>}
+                            location  <40 ,30 ,40.0>
+                            look_at   <40 ,30,0>}
 #declare Camera_2 = camera {perspective angle 90//rechts
                             location  <120 , 40 ,-60>
                             right x*image_width/image_height
@@ -58,7 +59,7 @@ look_at<0, 0, 0>
                             location  <40 ,40 ,-160>
                             right x*image_width/image_height
 							look_at <40,30,0>}
-camera {Camera_1}
+camera {Camera_0}
 
 // sun -------------------------------------------------------------------
 light_source{<0,2500,-2500> color rgb < 0.9921569,  0.9137255,  0.827451 >}  // sunlight
@@ -93,6 +94,20 @@ texture{ pigment{ ripples scale 0.5 turbulence 0.75 color_map{[0 color rgb <.36,
         finish {ambient 0.1}
        }
 #declare FirstTextur = texture{pigment{ gradient x color_map{ [0.0 color Scarlet*0.4][0.9 color Scarlet][0.9 color rgb 0.2][1.0 color rgb 0.2]}}scale 2 finish{ambient 0}}
+#declare TransparenzMuster =pigment{
+  image_map{ jpeg "Diag_Grid_03.jpg"
+             interpolate 2
+           } //
+          scale 10
+       } 
+#declare Pav_Mat = material{  
+texture{
+    pigment_pattern{ TransparenzMuster}
+    texture_map{
+     [0.0 pigment{rgbf<1,1,1,1>}]
+     [0.5 pigment{rgbf<1,1,1,1>}]
+     [1.0 T_Wood2 ]
+    } }}
 //===============================================
 #declare g_beet = union{difference{box {<0,0,0>,<8,1,18>}box {<0.2,0.5,0.2>,<7.8,1.5,17.8>} texture{T_Wood3 scale 0.4 rotate x*90}}box {<0.2,0.5,0.2>,<7.8,0.6,17.8>texture{ pigment{bozo turbulence 0.3 color_map{[0.0 color rgb <0.4,0.26,0.13>*0.5][0.5 color rgb <0.2,0.13,0.07>*0.2][1 color rgb <0.18,0.12,0.06>*0.5]} }normal { bozo 3 scale 0.05} finish { diffuse 0.9}}}
 #declare Random_1 = seed (2655);
@@ -351,7 +366,13 @@ object{holzstoss_basis rotate y*-90 translate <19,1.6,startz>}
 object {g_beet translate<-15,-0.1,-60>}
 object {g_beet translate<-16,-0.1,-80>}
 object {g_beet translate<-16,-0.1,-100>}
-
+//================Pavillon
+union{
+box {<0,0,0>,<10,10,.1> material{Pav_Mat}}
+box {<0,0,0>,<10,10,.1> translate<0,0,10> material{Pav_Mat}}
+box {<0,0,0>,<.1,10,10> texture{T_Wood2}}
+box {<0,9.9,0>,<10,10,10> texture{T_Wood2}}
+ translate<0,0,-30>}
 //Bäume
 
 
@@ -389,23 +410,23 @@ object {g_beet translate<-16,-0.1,-100>}
 		phong -1.0/5 phong_size 4
 	}
 }
-
-/*#include "kiefer.inc"
+object{Lampe02_ scale .004 translate <48,0,-20>}
+#include "kiefer.inc"
 union {
-object{FOLIAGE}
+object{FOLIAGE texture{gradient y turbulence .2 texture_map{[0 Blaetter_Sommer1][.3 Blaetter_Sommer1][.3 Blaetter_Sommer2][1 Blaetter_Sommer2]}}}
 object{WOOD}
-double_illuminate hollow
-scale 20
-translate <60,0,-30>
+double_illuminate //hollow
+scale 28
+translate <60,0,-110>
 }
 union {
-object{FOLIAGE}
+object{FOLIAGE texture{Blaetter_Sommer2}}
 object{WOOD}
 double_illuminate hollow
-scale 22
+scale 28
 rotate y*45
-translate <20,0,-40>
-}*/
+translate <80,0,-30>
+}
 //Bodenplatte
 
 object {bodenplatte texture { pigment{ image_map { jpeg "grasstex_herbst.jpg" map_type 0 interpolate 2} rotate <90,0,0> scale 30} finish {ambient 0}}}

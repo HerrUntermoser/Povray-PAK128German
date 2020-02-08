@@ -11,7 +11,8 @@ Um daraus eine Grafik zu machen benötigt ihr ausserdem die Include Dateien aus 
 ## Authors
 
 * **Daniel Martin** - [HerrUntermoser](https://github.com/HerrUntermoser)
+* **Ole** - Pumuckl999
 
 ## Copyright
-Dieses Projekt und sein Inhalt sind grösstenteils Open Source (Bis auf ein paar __Include Grafiken__).
-Es gilt dabei die GPL v.2.
+Für dieses Projekt und seinen Inhalt gilt die GPL v.2.
+Ein paar Objekte wurden von [F-Lohmüllers PovRay Tutorial][http://www.f-lohmueller.de/pov_tut/pov__ger.htm] abgeleitet bzw. inspiriert.
