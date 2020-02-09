@@ -6,7 +6,7 @@ Häuser und Bäume für das Simutrans Pakset [PAK128.german](https://www.simutra
 
 Die Szenedateien (.pov) können mit jedem Texteditor geöffnet und editiert werden.<br>
 Syntaxhighlightning gibt's allerdings nur beim KDE Editor "Kate" und den in Povray for Windows eingebauten.<br>
-Um daraus eine Grafik zu machen benötigt ihr ausserdem die Include Dateien aus dem Ordner "myinc" und natürlich den Raytracer [Pov-Ray](www.povray.org) selber.
+Um daraus eine Grafik zu machen benötigt ihr ausserdem die Include Dateien aus dem Ordner "myinc" und natürlich den Raytracer [Pov-Ray](http://povray.org) selber.
 
 ## Authors
 
@@ -15,4 +15,4 @@ Um daraus eine Grafik zu machen benötigt ihr ausserdem die Include Dateien aus 
 
 ## Copyright
 Für dieses Projekt und seinen Inhalt gilt die GPL v.2.
-Ein paar Objekte wurden von [F-Lohmüllers PovRay Tutorial][http://www.f-lohmueller.de/pov_tut/pov__ger.htm] abgeleitet bzw. inspiriert.
+Ein paar Objekte wurden von [F-Lohmüllers PovRay Tutorial](http://www.f-lohmueller.de/pov_tut/pov__ger.htm) abgeleitet bzw. inspiriert.
