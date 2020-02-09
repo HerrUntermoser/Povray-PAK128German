@@ -414,14 +414,14 @@ box {<0,9.9,0>,<10,10,10> texture{T_Wood2}}
 object{Lampe02_ scale .004 translate <48,0,-20>}
 #include "kiefer.inc"
 union {
-object{FOLIAGE texture{gradient y turbulence .2 texture_map{[0 Blaetter_Sommer1][.3 Blaetter_Sommer1][.3 Blaetter_Sommer2][1 Blaetter_Sommer2]}}}
+object{FOLIAGE texture{gradient y frequency 4  turbulence .7 omega .4 texture_map{[0 Blaetter_Herbst1][.3 Blaetter_Herbst2][.3 Blaetter_Herbst1][1 Blaetter_Herbst2]}}}
 object{WOOD}
 double_illuminate //hollow
 scale 28
 translate <60,0,-110>
 }
 union {
-object{FOLIAGE texture{Blaetter_Sommer2}}
+object{FOLIAGE texture{gradient y frequency 4 turbulence .5 omega .4 texture_map{[0 Blaetter_Herbst1][.3 Blaetter_Herbst2][.3 Blaetter_Herbst1][1 Blaetter_Herbst2]}}}
 object{WOOD}
 double_illuminate hollow
 scale 28
@@ -433,7 +433,7 @@ translate <80,0,-30>
 object {bodenplatte texture { pigment{ image_map { jpeg "grasstex_herbst.jpg" map_type 0 interpolate 2} rotate <90,0,0> scale 30} finish {ambient 0}}}
 //Ende Bodenplatte
 
-#declare Richtung = 3;
+#declare Richtung = 0;
 #switch ( Richtung )
 #case (0)
 //sued

@@ -76,12 +76,12 @@
           finish {phong 0.9}
         }
 #declare Blaetter_Herbst1 = 
- texture{ pigment{ color rgbf< .4,.11,.11,.3>*.8}   
+ texture{ pigment{ color rgb< .4,.11,.11>*.8}   
           normal { bumps 0.15 scale 0.05 }
           finish {ambient 0.1 diffuse 0.9}
         }
 #declare Blaetter_Herbst2 = 
- texture{ pigment{  color rgbf< .77,.38,.06, 0.4>*.85}   
+ texture{ pigment{  color rgb< .77,.38,.06>*.85}   
           normal { bumps 0.15 scale 0.05 }
           finish {diffuse 0.8}
         }
