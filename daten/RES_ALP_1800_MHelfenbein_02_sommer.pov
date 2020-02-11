@@ -1,7 +1,7 @@
 // PoVRay 3.7
 // author: daniel_martin@gmx.at
 #version 3.7; // 3.6
-#declare Radiosity_ON = 1; 
+#declare Radiosity_ON = 0; 
 #if (Radiosity_ON = 1 )
 global_settings{
   ambient_light 1
@@ -44,26 +44,26 @@ look_at<0, 0, 0>
                             look_at   <40 ,30,0>}
 //=============rechts==============
 #declare Camera_2 = camera {perspective angle 90
-                            location  <120 , 40 ,-60>
+                            location  <120 , 40 ,-90>
                             right x*image_width/image_height
-							look_at <0,30,-60>
+							look_at <0,30,-90>
 							}
 //==============links============
 #declare Camera_3 = camera { perspective angle 90
-                            location  <-40 , 40 ,-80>
+                            location  <-40 , 40 ,-90>
                             right x*image_width/image_height
-							look_at <0,30,-80>
+							look_at <0,30,-90>
 							}
 //=========Oben=======
 #declare Camera_4 = camera {perspective angle 90
-                            location  <50 , 100 ,-70>
+                            location  <30 , 100 ,-110>
                             right     x*image_width/image_height
-                            look_at   <50 , 0.0 ,-71>}
+                            look_at   <30 , 0.0 ,-110>}
 //===============Vorderseite===============
 #declare Camera_5 = camera {perspective angle 90
-                            location  <40 ,40 ,-160>
+                            location  <42 ,45 ,-160>
                             right x*image_width/image_height
-							look_at <40,30,0>}
+							look_at <42,40,0>}
 camera {Camera_0}
 
 //===========Sonne=========================
@@ -86,24 +86,40 @@ plane { <0,1,0>, 0  pigment{ color DarkSlateGrey } translate<0,-50,0> }
 #end
 //============OBJEKTE===============================
 #declare OGVRGiebelWand = difference{union{prism{0,0.5,6,<0,0>,<16.5,0>,<16.5,13.5>,<8.25,17>,<0,13.5>,<0,0> rotate x*-90}
-box{<0,0,0>,<0.5,13.5,12>}
-box{<0,0,0>,<0.5,13.5,12> translate<16,0,0>}
+box{<0,0,0>,<0.5,13.5,14>}
+box{<0,0,0>,<0.5,13.5,14> translate<16,0,0>}
 }
 object{Fenster_AS_6x6 translate <5,5,-0.6>}
 }
-#declare OGLRGiebelWand = prism{0,0.5,5,<0,0>,<14.5,15>,<14.5,21.5>,<0,36.5>,<0,0>}
+#declare OGLRGiebelWand = difference{prism{0,0.5,4,<0,0>,<14.5,18>,<0,36>,<0,0>}object{Fenster_AS_5x6 rotate y*90 rotate z*-90 translate <4,0.6,21>}}
+#declare DachSegment_1 = difference{prism{0,27,4,<0,0>,<17,21>,<0,42>,<0,0>}prism{0,28,4,<0,0>,<17,21>,<0,42>,<0,0> translate<-.2,-.5,0>}}
+#declare DachSegment_2 = difference{prism{0,42,4,<0,0>,<17,21>,<0,42>,<0,0>}prism{0,43,4,<0,0>,<17,21>,<0,42>,<0,0> translate<-.2,-.5,0>}}
+#declare DachSegment_3 = difference{prism{0,38,4,<0,0>,<18,0>,<9,4>,<0,0>}prism{0,39,4,<0,0>,<18,0>,<9,4>,<0,0> translate<0,-.5,-.2>}}
 //=======================================================
 #declare Haus = difference {
 union{
 object{Rohbau(110,25,36)}
 //Strassenseite
-object{OGVRGiebelWand  translate<22.5,25,.5>}
-object{OGVRGiebelWand  translate<74.5,25,.5>}
+object{OGVRGiebelWand  translate<22.5,24,.5>}
+object{OGVRGiebelWand  translate<74.5,24,.5>}
 //Hofseite
-object{OGVRGiebelWand  rotate y*180 translate<38.5,25,35.4>}
-object{OGVRGiebelWand  rotate y*180 translate<90.5,25,35.4>}
+object{OGVRGiebelWand  rotate y*180 translate<39,24,35.4>}
+object{OGVRGiebelWand  rotate y*180 translate<91,24,35.4>}
 object{OGLRGiebelWand rotate z*90 translate<0.5,25,0>}
 object{OGLRGiebelWand rotate z*90 translate<110,25,0>}
+//Dach
+object{DachSegment_1 rotate z*90 translate<26,22.7,-3> pigment{color MediumSeaGreen}}
+object{DachSegment_1 rotate z*90 translate<113,22.7,-3> pigment{color Orange}}
+object{DachSegment_2 rotate z*90 translate<78,22.7,-3> pigment{color rgb <.36,.54,.66>}}
+object{DachSegment_3 rotate x*-90 translate<21.75,37.25,36> pigment{color rgb <.51,.41,.33>}}
+object{DachSegment_3 rotate x*-90 translate<73.75,37.25,36> pigment{color rgb <.23,.48,.34>}}
+//Kamine
+object{Kamin_2 translate<24,35,17>}
+object{Kamin_2 translate<34,35,17>}
+object{Kamin_2 translate<50,35,17>}
+object{Kamin_2 translate<60,35,17>}
+object{Kamin_2 translate<76,35,17>}
+object{Kamin_2 translate<86,35,17>}
 }
 //Fensterloch Vorderseite
 object{Fenster_AS_6x6 translate <5,9,-0.1>}
