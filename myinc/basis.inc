@@ -207,6 +207,44 @@ texture{pigment{color rgb <.98,.92,.84>}finish{phong 0.9}}}
 box {<0,0,0>,<6.5,0.08,-0.4> texture{T_Copper_2A}}
 texture{pigment{color rgb 1*0.9}finish{specular 0.3 roughness 0.08}}
 }
+#declare Fenster6x6_Rnavajo = union{
+difference{
+box {<0,0,0>,<6.5,6.5,0.3>}
+box {<0.2,0.2,-0.1>,<6.3,6.3,0.4>}
+}
+box {<3.1,0,0>,<3.4,6.5,0.3>}
+box {<0.05,0.05,0.1>,<6.45,6.45,.15> texture{NBoldglass}}
+//Zierstreifen
+union{
+box {<-.6,-.6,0>,<-0.05,6.5,0.1>}
+box {<6.55,-.6,0>,<7.1,6.5,0.1>}
+box {<-.6,-.6,0>,<7.1,-.05,0.1>}
+box {<-.6,6.55,0>,<7.1,7.1,0.1>}
+ translate <0,0,-0.2>
+texture{pigment{color rgb  <1,.87,.68>}finish{phong 0.9}}}
+//Blech
+box {<0,0,0>,<6.5,0.08,-0.4> texture{T_Copper_2A}}
+ texture{T_Wood1}
+}
+#declare Fenster5x6_Rnavajo = union{
+difference{
+box {<0,0,0>,<5,6,0.3>}
+box {<0.2,0.2,-0.1>,<4.8,5.8,0.4>}
+}
+box {<2.35,0,0>,<2.65,6,0.3>}
+box {<0.05,0.05,0.1>,<4.95,5.95,.15> texture{NBoldglass}}
+//Zierstreifen
+union{
+box {<-.6,-.6,0>,<-0.05,6,0.1>}
+box {<5.05,-.6,0>,<5.6,6,0.1>}
+box {<-.6,-.6,0>,<5.6,-.05,0.1>}
+box {<-.6,6.05,0>,<5.6,6.6,0.1>}
+ translate <0,0,-0.2>
+texture{pigment{color rgb <.98,.92,.84>}finish{ambient <.98,.92,.84> phong .9 }}}
+//Blech
+box {<0,0,0>,<5,0.08,-0.4> texture{T_Copper_2A}}
+texture{T_Wood1}
+}
 #declare Fenster5x6_RW = union{
 difference{
 box {<0,0,0>,<5,6,0.3>}
@@ -370,6 +408,22 @@ sphere{<0,0,0>,0.2 translate <0.4,5,0> texture{T_Chrome_1A}}
  box{<-.2,10.9,-.1>,<6.2,10.2,0>}
  sphere {<1,5,0>,0.3 texture{T_Brass_1A}}
  texture{T_Wood22 scale 0.5}}
+ #declare Haustuer_6_10_rund = union{
+difference{
+box{<0,0,0>,<6,10,0.1>}
+box{<0,0,-.1>,<6,7,0.3>}
+cylinder{<0,0,0>,<0,0,.3>,3 translate<3,7,-.1>}
+}
+box{<0,0,.15>,<6,10,0.2> texture{DMFWood3}}
+union{
+box{<-.8,0,-.02>,<0,10,0>}
+ box{<6,0,-.02>,<6.8,10,0>}
+ box{<-.8,10,-.02>,<6.6,10.8,0>}
+ pigment{color rgb <1,.87,.68>}
+ }
+ sphere {<5,5,0>,0.3 texture{T_Brass_1A}}
+ texture{pigment{image_map{tga "parkett_braun_alt.tga" map_type 0 interpolate 3}} scale 2.5}
+ }
 //Kamine=========================================================================
 #declare Kamin_1 = difference{
 union {
