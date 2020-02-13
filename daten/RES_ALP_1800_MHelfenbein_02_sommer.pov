@@ -27,11 +27,9 @@ global_settings{ assumed_gamma 1.1 }
 #include "textures.inc"
 #include "glass.inc"
 #include "metals.inc"
-#include "stones.inc"
 #include "woods.inc"
 #include "basis.inc"
 #include "kleinkram.inc"
-#include "Lampe02_geom.inc"
 //=============Render Kamera=========
   #declare Camera_0 = camera{
   orthographic
@@ -40,8 +38,8 @@ look_at<0, 0, 0>
 }
 //=========Rückseite============
 #declare Camera_1 = camera {perspective angle 90
-                            location  <40 ,30 ,40.0>
-                            look_at   <40 ,30,0>}
+                            location  <60 ,10 ,-70.0>
+                            look_at   <60 ,10,-200>}
 //=============rechts==============
 #declare Camera_2 = camera {perspective angle 90
                             location  <120 , 40 ,-30>
@@ -56,14 +54,14 @@ look_at<0, 0, 0>
 							}
 //=========Oben=======
 #declare Camera_4 = camera {perspective angle 90
-                            location  <30 , 70 ,-90>
+                            location  <70 , 70 ,-90>
                             right     x*image_width/image_height
-                            look_at   <20 , 0.0 ,-70>}
+                            look_at   <69 , 0.0 ,-80>}
 //===============Vorderseite===============
 #declare Camera_5 = camera {perspective angle 90
-                            location  <30 ,45 ,-90>
+                            location  <30 ,15 ,-90>
                             right x*image_width/image_height
-							look_at <30,40,0>}
+							look_at <30,10,0>}
 camera {Camera_0}
 
 //===========Sonne=========================
@@ -171,14 +169,14 @@ object{Fenster6x6_Rnavajo translate <79.5,29,0>}
 object{Fenster6x6_Rnavajo rotate y*180 translate <34,29,36>}
 object{Fenster6x6_Rnavajo rotate y*180 translate <86,29,36>}
 //Fenster EG Hofseiteseite
-object{Fenster6x6_Rnavajo rotate y*180 translate <11,9,36>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <21,9,36>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <41,9,36>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <51,9,36>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <105,9,36>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <94,9,36>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <73,9,36>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <62,9,36>}
+object{Fenster6x6_Rnavajo rotate y*180 translate <11.5,9,36>}
+object{Fenster6x6_Rnavajo rotate y*180 translate <21.5,9,36>}
+object{Fenster6x6_Rnavajo rotate y*180 translate <41.5,9,36>}
+object{Fenster6x6_Rnavajo rotate y*180 translate <51.5,9,36>}
+object{Fenster6x6_Rnavajo rotate y*180 translate <105.5,9,36>}
+object{Fenster6x6_Rnavajo rotate y*180 translate <94.5,9,36>}
+object{Fenster6x6_Rnavajo rotate y*180 translate <73.5,9,36>}
+object{Fenster6x6_Rnavajo rotate y*180 translate <62.5,9,36>}
 //Fenster links aussen
 object{Fenster5x6_Rnavajo rotate y*90 translate <-.1,9,16>}
 object{Fenster5x6_Rnavajo rotate y*90 translate <-.1,9,26>}
@@ -195,12 +193,54 @@ object{Fenster5x6_Rnavajo rotate y*-90 translate <110,29,16>}
 union{
 object {Haus translate<-15,0,-130> texture{WandPutz}}
 object {Haus rotate y*180 translate<95,0,-21> texture{WandPutz}}
+//Hausnummern
+text{ttf "/home/herruntermoser/.local/share/fonts/Georgia.TTF","Nr.22",1,0 translate <10,11.5,-47.7> scale 1.2 pigment{color rgb <.3,.65,1>}}
+cylinder{<0,0,0>,<0,0,.5>,2 translate <13.5,14,-57.1> texture{pigment{color rgb 1*1.1} finish{phong 1}}}
+text{ttf "/home/herruntermoser/.local/share/fonts/Georgia.TTF","Nr.24",1,0 translate <54.5,11.5,-47.7> scale 1.2 pigment{color rgb <.3,.65,1>}}
+cylinder{<0,0,0>,<0,0,.5>,2 translate <67,14,-57.1> texture{pigment{color rgb 1*1.1} finish{phong 1}}}
+//===========================================================================
+text{ttf "/home/herruntermoser/.local/share/fonts/Georgia.TTF","Nr.21",1,0 rotate y*180 translate <12.5,11.5,-77.9> scale 1.2 pigment{color rgb <.3,.65,1>}}
+cylinder{<0,0,0>,<0,0,.5>,2 translate <13.5,14,-94.2> texture{pigment{color rgb 1*1.1} finish{phong 1}}}
+text{ttf "/home/herruntermoser/.local/share/fonts/Georgia.TTF","Nr.23",1,0 rotate y*180 translate <56.5,11.5,-77.9> scale 1.2 pigment{color rgb <.3,.65,1>}}
+cylinder{<0,0,0>,<0,0,.5>,2 translate <66,14,-94.1> texture{pigment{color rgb 1*1.1} finish{phong 1}}}
 //Gehweg
-box{<-20,0,0>,<100,.05,15> translate <0,0,-90> texture{pigment{image_map{png "stonewall.png"} rotate x*90 scale 10}}}
+box{<-20,0,0>,<100,.05,15> translate <0,0,-85> texture{pigment{image_map{png "stonewall.png"} rotate x*90 scale 10}}}
 box{<0,0,0>,<15,.05,40> translate <7,0,-95> texture{pigment{image_map{png "stonewall.png"} rotate x*90 scale 10}}}
-box{<0,0,0>,<15,.05,40> translate <62,0,-95> texture{pigment{image_map{png "stonewall.png"} rotate x*90 scale 10}}}
+box{<0,0,0>,<15,.05,40> translate <60,0,-95> texture{pigment{image_map{png "stonewall.png"} rotate x*90 scale 10}}}
+//Laternen 
+object{Laterne_1 translate <7,0,-85>}
+object{Laterne_1 translate <7,0,-70>}
+object{Laterne_1 translate <60,0,-85>}
+object{Laterne_1 translate <60,0,-70>}
+//Büsche
+#include "trauerweide.inc"
+#declare Blaetter_3 = 
+ texture{ pigment{ color rgb< .16, .27,0>*1}   
+          normal { bumps 0.15 scale 0.05 }
+          finish {ambient 0.1 diffuse 0.9 phong 0.9}
+        }
+#declare Blaetter_4 = 
+ texture{ pigment{  color rgb< .11,.19,0>*1.05}   
+          normal { bumps 0.15 scale 0.05 }
+          finish {phong 0.9}
+        }
+union { object { weeping_willow_13_stems texture{Rinde}}
+         object { weeping_willow_13_leaves  double_illuminate
+                  texture{ Blaetter_3 }   
+                  interior_texture{ Blaetter_4 }}
+         scale .5 rotate y*37 translate<90,0,-63>}
+union { object { weeping_willow_13_stems texture{Rinde}}
+         object { weeping_willow_13_leaves  double_illuminate
+                  texture{ Blaetter_3 }   
+                  interior_texture{ Blaetter_4 }}
+         scale .5 rotate y*37 translate<80,0,-65>}
+union { object { weeping_willow_13_stems texture{Rinde}}
+         object { weeping_willow_13_leaves  double_illuminate
+                  texture{ Blaetter_3 }   
+                  interior_texture{ Blaetter_4 }}
+         scale .7 rotate y*-27 translate<60,0,-69>}
 //Bodenplatte
-object {bodenplatte texture { pigment{ image_map { png "grass.png" map_type 0 interpolate 2} rotate <90,0,0> scale 30} finish {ambient 0}}}
+object {bodenplatte texture { pigment{ image_map { jpeg "grastex2.jpg" map_type 0 interpolate 2} rotate <90,0,0> scale 30} normal{bump_map{ jpeg "grastex2_tiefe.jpg" interpolate 2 bump_size 5}rotate x*90 scale 30}finish {ambient 0}}}
 //Ende Bodenplatte
 
 #declare Richtung = 0;
