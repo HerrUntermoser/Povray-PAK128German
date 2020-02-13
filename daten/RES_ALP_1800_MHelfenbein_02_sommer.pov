@@ -1,7 +1,7 @@
 // PoVRay 3.7
 // author: daniel_martin@gmx.at
 #version 3.7; // 3.6
-#declare Radiosity_ON = 0; 
+#declare Radiosity_ON = 1; 
 #if (Radiosity_ON = 1 )
 global_settings{
   ambient_light 1
@@ -56,9 +56,9 @@ look_at<0, 0, 0>
 							}
 //=========Oben=======
 #declare Camera_4 = camera {perspective angle 90
-                            location  <30 , 100 ,-110>
+                            location  <30 , 70 ,-90>
                             right     x*image_width/image_height
-                            look_at   <20 , 0.0 ,-110>}
+                            look_at   <20 , 0.0 ,-70>}
 //===============Vorderseite===============
 #declare Camera_5 = camera {perspective angle 90
                             location  <30 ,45 ,-90>
@@ -85,7 +85,9 @@ sky_sphere{
 plane { <0,1,0>, 0  pigment{ color DarkSlateGrey } translate<0,-50,0> }
 #end
 //============OBJEKTE===============================
-#declare WandPutz = texture{pigment{color rgb <1,.74,.38>*1.1} normal { agate .2 agate_turb 2 scale .4 } finish{specular .1 roughness .8}}
+#declare Holzpanel = texture{DMFWood3 scale <2,1,2> finish{ambient .1 diffuse .9}}
+#declare WandPutz = texture{pigment{bozo color_map {[0 color rgb <1,.74,.38>*1.1][.5  color rgb <1,.74,.38>*.8][1  color rgb <1,.74,.38>]}} normal { agate .2 agate_turb 2 scale .4 } finish{ambient .1 diffuse .9}}
+#declare Holzlatten = texture {gradient y texture_map{[0 Holzpanel][.5 Holzpanel][.5 pigment {color rgb 0}][.6 pigment{color rgb 0}][.6 Holzpanel][1 Holzpanel]}}
 #declare OGVRGiebelWand = difference{union{prism{0,0.5,6,<0,0>,<16.5,0>,<16.5,13.5>,<8.25,17>,<0,13.5>,<0,0> rotate x*-90}
 box{<0,0,0>,<0.5,13.5,14>}
 box{<0,0,0>,<0.5,13.5,14> translate<16,0,0>}
@@ -130,13 +132,13 @@ object{Fenster_AS_5x6 rotate y*90 translate <109.4,9,26>}
 #declare Haus = union{
 object{Haus_Roh}
 //Strassenseite
-object{OGVRGiebelWand  translate<22.5,24,.5>}
-object{OGVRGiebelWand  translate<74.5,24,.5>}
+object{OGVRGiebelWand  translate<22.5,24,.5> texture{Holzlatten scale 1.5}}
+object{OGVRGiebelWand  translate<74.5,24,.5> texture{Holzlatten scale 1.5}}
 //Hofseite
-object{OGVRGiebelWand  rotate y*180 translate<39,24,35.4>}
-object{OGVRGiebelWand  rotate y*180 translate<91,24,35.4>}
-object{OGLRGiebelWand rotate z*90 translate<0.5,25,0>}
-object{OGLRGiebelWand rotate z*90 translate<110,25,0>}
+object{OGVRGiebelWand  rotate y*180 translate<39,24,35.4> texture{Holzlatten scale 1.5}}
+object{OGVRGiebelWand  rotate y*180 translate<91,24,35.4> texture{Holzlatten scale 1.5}}
+object{OGLRGiebelWand rotate z*90 translate<0.5,25,0> texture{Holzlatten scale 2}}
+object{OGLRGiebelWand rotate z*90 translate<110,25,0> texture{Holzlatten scale 2}}
 //Dach
 object{DachSegment_1 rotate z*90 translate<26,22.7,-3>}
 object{DachSegment_1 rotate z*90 translate<113,22.7,-3>}
@@ -193,9 +195,11 @@ object{Fenster5x6_Rnavajo rotate y*-90 translate <110,29,16>}
 union{
 object {Haus translate<-15,0,-130> texture{WandPutz}}
 object {Haus rotate y*180 translate<95,0,-21> texture{WandPutz}}
-
+//Gehweg
+box{<-20,0,0>,<100,.05,15> translate <0,0,-90> texture{pigment{image_map{png "stonewall.png"} rotate x*90 scale 10}}}
+box{<0,0,0>,<15,.05,40> translate <7,0,-95> texture{pigment{image_map{png "stonewall.png"} rotate x*90 scale 10}}}
+box{<0,0,0>,<15,.05,40> translate <62,0,-95> texture{pigment{image_map{png "stonewall.png"} rotate x*90 scale 10}}}
 //Bodenplatte
-
 object {bodenplatte texture { pigment{ image_map { png "grass.png" map_type 0 interpolate 2} rotate <90,0,0> scale 30} finish {ambient 0}}}
 //Ende Bodenplatte
 
