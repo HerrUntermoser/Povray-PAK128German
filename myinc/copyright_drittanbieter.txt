@@ -1,0 +1,6 @@
+##Povray Objekte
+Ein Teil der Objekte wurde von F-Lohmüllers PovRay Tutorial (http://www.f-lohmueller.de/pov_tut/pov__ger.htm) abgeleitet bzw. inspiriert.
+
+##bienen-fisch.de
+Ein Teil meiner Gebäude verwendet eine Textur vom oben genannten Anbieter. Diese Textur darf nicht in eine andere Sammlung integriert oder als eigenständiges Produkt angeboten / verkauft werden.
+Eine weitergehende Nutzung verlangt eine mündliche oder schriftliche Genehmigung dieser Autoren.

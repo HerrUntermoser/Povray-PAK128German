@@ -94,9 +94,9 @@ box{<0,0,0>,<0.5,13.5,14> translate<16,0,0>}
 object{Fenster_AS_6x6 translate <5,5,-0.6>}
 }
 #declare OGLRGiebelWand = difference{prism{0,0.5,4,<0,0>,<14.5,18>,<0,36>,<0,0>}object{Fenster_AS_5x6 rotate y*90 rotate z*-90 translate <4,0.6,21>}}
-#declare DachSegment_1 = difference{prism{0,27,4,<0,0>,<17,21>,<0,42>,<0,0>}prism{0,28,4,<0,0>,<17,21>,<0,42>,<0,0> translate<-.2,-.5,0>} pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}scale 8}}
-#declare DachSegment_2 = difference{prism{0,42,4,<0,0>,<17,21>,<0,42>,<0,0>}prism{0,43,4,<0,0>,<17,21>,<0,42>,<0,0> translate<-.2,-.5,0>} pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}scale 8}}
-#declare DachSegment_3 = difference{prism{0,38,4,<0,0>,<18,0>,<9,4>,<0,0>}prism{0,39,4,<0,0>,<18,0>,<9,4>,<0,0> translate<0,-.5,-.2>} pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}scale 5}}
+#declare DachSegment_1 = difference{prism{0,27,4,<0,0>,<17,21>,<0,42>,<0,0>}prism{0,28,4,<0,0>,<17,21>,<0,42>,<0,0> translate<-.2,-.5,0>} pigment{image_map{jpeg "dachziegel_alt_schnee.jpg" interpolate 2}scale 12}}
+#declare DachSegment_2 = difference{prism{0,42,4,<0,0>,<17,21>,<0,42>,<0,0>}prism{0,43,4,<0,0>,<17,21>,<0,42>,<0,0> translate<-.2,-.5,0>} pigment{image_map{jpeg "dachziegel_alt_schnee.jpg" interpolate 2}scale 12}}
+#declare DachSegment_3 = difference{prism{0,38,4,<0,0>,<18,0>,<9,4>,<0,0>}prism{0,39,4,<0,0>,<18,0>,<9,4>,<0,0> translate<0,-.5,-.2>} pigment{image_map{jpeg "dachziegel_alt_schnee.jpg" interpolate 2}scale 12}}
 //=======================================================
 #declare Haus_Roh = difference {
 object{Rohbau(110,25,36)}
@@ -227,26 +227,14 @@ object{Taubenschlag scale .003 translate <50,0,-68>}
           normal { bumps 0.15 scale 0.05 }
           finish {phong 0.9}
         }
-union { object { weeping_willow_13_stems texture{Rinde}}
-         object { weeping_willow_13_leaves  double_illuminate
-                  texture{ Blaetter_3 }   
-                  interior_texture{ Blaetter_4 }}
-         scale .5 rotate y*37 translate<90,0,-63>}
-union { object { weeping_willow_13_stems texture{Rinde}}
-         object { weeping_willow_13_leaves  double_illuminate
-                  texture{ Blaetter_3 }   
-                  interior_texture{ Blaetter_4 }}
-         scale .5 rotate y*37 translate<80,0,-65>}
-union { object { weeping_willow_13_stems texture{Rinde}}
-         object { weeping_willow_13_leaves  double_illuminate
-                  texture{ Blaetter_3 }   
-                  interior_texture{ Blaetter_4 }}
-         scale .7 rotate y*-27 translate<0,0,-69>}
+object { weeping_willow_13_stems texture{Rinde} scale .5 rotate y*37 translate<90,0,-63>}
+object { weeping_willow_13_stems texture{Rinde} scale .5 rotate y*37 translate<80,0,-65>}
+object { weeping_willow_13_stems texture{Rinde} scale .7 rotate y*-27 translate<0,0,-69>}
 //Bodenplatte
-object {bodenplatte texture { pigment{ image_map { jpeg "grastex2.jpg" map_type 0 interpolate 2} rotate <90,0,0> scale 30} normal{bump_map{ jpeg "grastex2_tiefe.jpg" interpolate 2 bump_size 5}rotate x*90 scale 30}finish {ambient 0}}}
+object {bodenplatte texture { pigment{ image_map { jpeg "grasstex1_schnee.jpg" map_type 0 interpolate 2} rotate <90,0,0> scale 30} normal{bump_map{ jpeg "grastex2_tiefe.jpg" interpolate 2 bump_size 5}rotate x*90 scale 30}finish {ambient 0}}}
 //Ende Bodenplatte
 
-#declare Richtung = 3;
+#declare Richtung = 1;
 #switch ( Richtung )
 #case (0)
 //sued

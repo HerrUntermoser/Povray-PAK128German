@@ -9,6 +9,7 @@
 #version 3.7;
 #include "metals.inc"
 #include "shapes.inc"
+#include "stones.inc"
 #declare STex = texture_map{[0 T_Wood12 scale 0.9]
 													[0.5 T_Wood12 scale 0.9]
 													[0.5 T_Wood22 scale 0.5]

@@ -15,4 +15,5 @@ Um daraus eine Grafik zu machen benötigt ihr ausserdem die Include Dateien aus 
 
 ## Copyright
 Für dieses Projekt und seinen Inhalt gilt die GPL v.2.
-Ein paar Objekte wurden von [F-Lohmüllers PovRay Tutorial](http://www.f-lohmueller.de/pov_tut/pov__ger.htm) abgeleitet bzw. inspiriert.
+Darüber hinaus wurden Texturen und Objekte von Drittanbietern verwendet. Für diese gilt die GPL NICHT!, sondern ihre eigene Lizenz.
+Siehe dazu die gleichnamige *.txt Datei im Ordner [myinc]([HerrUntermoser](https://github.com/HerrUntermoser/Povray-PAK128German/myinc/copyright_drittanbieter.txt).
