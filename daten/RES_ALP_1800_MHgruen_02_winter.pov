@@ -85,7 +85,7 @@ plane { <0,1,0>, 0  pigment{ color DarkSlateGrey } translate<0,-50,0> }
 #end
 //============OBJEKTE===============================
 #declare Holzpanel = texture{DMFWood3 scale <2,1,2> finish{ambient .1 diffuse .9}}
-#declare WandPutz = texture{pigment{bozo color_map {[0 color rgb <1,.74,.38>*1.1][.5  color rgb <1,.74,.38>*.8][1  color rgb <1,.74,.38>]}} normal { agate .2 agate_turb 2 scale .4 } finish{ambient .1 diffuse .9}}
+#declare WandPutz = texture{pigment{cells color_map {[0 color rgb <.72,.92,.64>*.6][.5  color rgb <.47,.62,.42>*.8][1  color rgb <.72,.92,.64>*.6]}} normal { agate .2 agate_turb .4 } finish{ambient .1 diffuse .9}}
 #declare Holzlatten = texture {gradient y texture_map{[0 Holzpanel][.5 Holzpanel][.5 pigment {color rgb 0}][.6 pigment{color rgb 0}][.6 Holzpanel][1 Holzpanel]}}
 #declare OGVRGiebelWand = difference{union{prism{0,0.5,6,<0,0>,<16.5,0>,<16.5,13.5>,<8.25,17>,<0,13.5>,<0,0> rotate x*-90}
 box{<0,0,0>,<0.5,13.5,14>}
@@ -192,8 +192,8 @@ object{Fenster5x6_Rnavajo rotate y*-90 translate <110,29,16>}
 //Szene=============================================================================================================
 
 union{
-object {Haus translate<-15,0,-130> texture{WandPutz} texture{pigment{image_map{png "zierstreifen.png"} scale <1,24,1>}}}
-object {Haus rotate y*180 translate<95,0,-21> texture{WandPutz} texture{pigment{image_map{png "zierstreifen.png"} scale <1,24,1>}}}
+object {Haus translate<-15,0,-130> texture{WandPutz} texture{pigment{image_map{png "zierstreifen_grau.png"} scale <1,24,1>}}}
+object {Haus rotate y*180 translate<95,0,-21> texture{WandPutz} texture{pigment{image_map{png "zierstreifen_grau.png"} scale <1,24,1>}}}
 //Hausnummern
 text{ttf "/home/herruntermoser/.local/share/fonts/Georgia.TTF","Nr.22",1,0 translate <10,11.5,-47.7> scale 1.2 pigment{color rgb <.3,.65,1>}}
 cylinder{<0,0,0>,<0,0,.5>,2 translate <13.5,14,-57.1> texture{pigment{color rgb 1*1.1} finish{phong 1}}}
@@ -234,7 +234,7 @@ object { weeping_willow_13_stems texture{Rinde} scale .7 rotate y*-27 translate<
 object {bodenplatte texture { pigment{ image_map { jpeg "grasstex1_schnee.jpg" map_type 0 interpolate 2} rotate <90,0,0> scale 30} normal{bump_map{ jpeg "grastex2_tiefe.jpg" interpolate 2 bump_size 5}rotate x*90 scale 30}finish {ambient 0}}}
 //Ende Bodenplatte
 
-#declare Richtung = 0;
+#declare Richtung = 3;
 #switch ( Richtung )
 #case (0)
 //sued
