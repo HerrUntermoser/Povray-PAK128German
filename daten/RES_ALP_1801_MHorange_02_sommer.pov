@@ -43,9 +43,9 @@ look_at<0, 0, 0>
                             look_at   <60 ,10,-200>}
 //=============rechts==============
 #declare Camera_2 = camera {perspective angle 90
-                            location  <130 , 40 ,-40>
+                            location  <130 , 40 ,-100>
                             right x*image_width/image_height
-							look_at <0,30,-40>
+							look_at <0,30,-100>
 							}
 //==============links============
 #declare Camera_3 = camera { perspective angle 90
@@ -55,14 +55,14 @@ look_at<0, 0, 0>
 							}
 //=========Oben=======
 #declare Camera_4 = camera {perspective angle 90
-                            location  <10 , 80 ,-50>
+                            location  <0 , 90 ,-50>
                             right     x*image_width/image_height
-                            look_at   <9 , 0.0 ,-55>}
+                            look_at   <0 , 0.0 ,-55>}
 //===============Vorderseite===============
 #declare Camera_5 = camera {perspective angle 90
-                            location  <30 ,15 ,-90>
+                            location  <90 ,40 ,-150>
                             right x*image_width/image_height
-							look_at <30,10,0>}
+							look_at <90,35,0>}
 camera {Camera_0}
 
 //===========Sonne=========================
@@ -94,9 +94,16 @@ box{<0,0,0>,<0.5,13.5,14> translate<16,0,0>}
 object{Fenster_AS_6x6 translate <5,5,-0.6>}
 }
 #declare OGLRGiebelWand = difference{prism{0,0.5,4,<0,0>,<14.5,18>,<0,36>,<0,0>}object{Fenster_AS_5x6 rotate y*90 rotate z*-90 translate <4,0.6,21>}}
-#declare DachSegment_1 = difference{prism{0,72,4,<0,0>,<0,40>,<20,20>,<0,0>}prism{0,41,4,<0,0>,<0,40>,<20,20>,<0,0> translate<-.2,-.5,0>} pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}scale 8}}
+#declare DachSegment_1 = difference{prism{0,73,4,<0,0>,<0,40>,<20,20>,<0,0>}prism{0,41,4,<0,0>,<0,40>,<20,20>,<0,0> translate<-.2,-.5,0>} pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}scale 8}}
 #declare DachSegment_2 = difference{prism{0,73,4,<0,0>,<0,40>,<20,20>,<0,0>}prism{0,41,4,<0,0>,<0,40>,<20,20>,<0,0> translate<-.2,-.5,0>} pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}scale 8}}
 #declare DachSegment_3 = difference{prism{0,38,4,<0,0>,<18,0>,<9,4>,<0,0>}prism{0,39,4,<0,0>,<18,0>,<9,4>,<0,0> translate<0,-.5,-.2>} pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}scale 5}}
+#declare DachEcken = difference{
+    box {<1,1,1>, <-1,0,-1>}
+    plane { x-y,  -sqrt(2)/2 }
+    plane { -x-y, -sqrt(2)/2 }
+    plane { z-y,  -sqrt(2)/2 }
+    plane { -z-y, -sqrt(2)/2 }
+}
 //=======================================================
 #declare Haus_Roh = difference {
 box{<0,0,0>,<110,25,109>}
@@ -160,19 +167,32 @@ object{Haus_Roh}
 //object{OGLRGiebelWand rotate z*90 translate<0.5,25,0> texture{Holzlatten scale 2}}
 //object{OGLRGiebelWand rotate z*90 translate<110,25,0> texture{Holzlatten scale 2}}
 //Dach
-object{DachSegment_1 rotate z*90 translate<90,23,-2>}
-object{DachSegment_1 rotate z*90 translate<90,23,71>}
+object{DachSegment_1 rotate z*90 translate<92,23,-2>}
+object{DachSegment_1 rotate z*90 translate<92,23,71>}
 object{DachSegment_2 rotate z*90 rotate y*90 translate<72,23,18>}
 object{DachSegment_2 rotate z*90 rotate y*90 translate<-2,23,18>}
+//Dachecken
+object{DachEcken scale <20,20,20> translate<91.99,23,18.01> pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}rotate x*90 scale 8}}//rechts vorn
+object{DachEcken scale <20,20,20> translate<17.99,23,18.01> pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}rotate x*90 scale 8}}//links vorn
+object{DachEcken scale <20,20,20> translate<17.99,23,90.99>  pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}rotate x*90 scale 8}}//links hinten
+object{DachEcken scale <20,20,20> translate<91.99,23,90.99>  pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}rotate x*90 scale 8}}//rechts hinten
 //object{DachSegment_3 rotate x*-90 translate<21.75,37.25,36>}
 //object{DachSegment_3 rotate x*-90 translate<73.75,37.25,36>}
 //Kamine
-object{Kamin_2 translate<24,35,17>}
-object{Kamin_2 translate<34,35,17>}
-object{Kamin_2 translate<50,35,17>}
-object{Kamin_2 translate<60,35,17>}
-object{Kamin_2 translate<76,35,17>}
-object{Kamin_2 translate<86,35,17>}
+//vorne
+object{Kamin_2 translate<24,36,14>}
+object{Kamin_2 translate<44,36,14>}
+object{Kamin_2 translate<64,36,14>}
+object{Kamin_2 translate<84,36,14>}
+//hinten
+object{Kamin_2 translate<24,36,92>}
+object{Kamin_2 translate<44,36,92>}
+object{Kamin_2 translate<64,36,92>}
+object{Kamin_2 translate<84,36,92>}
+//rechts
+object{Kamin_2 rotate y*90 translate<94,36,45>}
+//links
+object{Kamin_2 rotate y*90 translate<14,36,48>}
 //Haustüren
 //object{Haustuer_6_10_rund rotate y*180 translate<31,1,36.1>}
 //object{Haustuer_6_10_rund rotate y*180 translate<84,1,36.1>}
