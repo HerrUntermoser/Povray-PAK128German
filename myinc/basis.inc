@@ -246,6 +246,45 @@ texture{pigment{color rgb <.98,.92,.84>}finish{ambient <.98,.92,.84> phong .9 }}
 box {<0,0,0>,<5,0.08,-0.4> texture{T_Copper_2A}}
 texture{T_Wood1}
 }
+#declare Fenster6x6_Rgruen = union{
+difference{
+box {<0,0,0>,<6.5,6.5,0.3>}
+box {<0.2,0.2,-0.1>,<6.3,6.3,0.4>}
+texture{pigment{color rgb  1}finish{phong 0.9}}}
+box {<3.1,0,0>,<3.4,6.5,0.3>pigment{color rgb  1}}
+box {<0.05,0.05,0.1>,<6.45,6.45,.15> texture{NBoldglass}}
+//Zierstreifen
+union{
+box {<-.6,-.6,0>,<-0.05,6.5,0.1>}
+box {<6.55,-.6,0>,<7.1,6.5,0.1>}
+box {<-.6,-.6,0>,<7.1,-.05,0.1>}
+box {<-.6,6.55,0>,<7.1,7.1,0.1>}
+ translate <0,0,-0.2>
+texture{pigment{color rgb  <.23,.48,.34>}finish{phong 0.9}}}
+//Blech
+box {<0,0,0>,<6.5,0.08,-0.4> texture{T_Copper_2A}}
+ texture{T_Wood1}
+}
+#declare Fenster5x6_Rgruen = union{
+difference{
+box {<0,0,0>,<5,6,0.3>}
+box {<0.2,0.2,-0.1>,<4.8,5.8,0.4>}
+texture{pigment{color rgb  1}}
+}
+box {<2.35,0,0>,<2.65,6,0.3> pigment{color rgb 1}}
+box {<0.05,0.05,0.1>,<4.95,5.95,.15> texture{NBoldglass}}
+//Zierstreifen
+union{
+box {<-.6,-.6,0>,<-0.05,6,0.1>}
+box {<5.05,-.6,0>,<5.6,6,0.1>}
+box {<-.6,-.6,0>,<5.6,-.05,0.1>}
+box {<-.6,6.05,0>,<5.6,6.6,0.1>}
+ translate <0,0,-0.2>
+texture{pigment{color rgb <.23,.48,.34>}finish{ambient <.23,.48,.34> phong .9 }}}
+//Blech
+box {<0,0,0>,<5,0.08,-0.4> texture{T_Copper_2A}}
+texture{T_Wood1}
+}
 #declare Fenster5x6_RW = union{
 difference{
 box {<0,0,0>,<5,6,0.3>}

@@ -85,7 +85,7 @@ plane { <0,1,0>, 0  pigment{ color DarkSlateGrey } translate<0,-50,0> }
 #end
 //============OBJEKTE===============================
 #declare Holzpanel = texture{DMFWood3 scale <2,1,2> finish{ambient .1 diffuse .9}}
-#declare WandPutz = texture{pigment{bozo color_map {[0 color rgb <1,.74,.38>*1.1][.5  color rgb <1,.74,.38>*.8][1  color rgb <1,.74,.38>]}} normal { agate .2 agate_turb 2 scale .4 } finish{ambient .1 diffuse .9}}
+#declare WandPutz = texture{pigment{bumps color_map {[0 color rgb 1*1.1][.5  color rgb 0.8*.8][1  color rgb 1]} scale .03} finish{ambient .1 diffuse .9}}
 #declare Holzlatten = texture {gradient y texture_map{[0 Holzpanel][.5 Holzpanel][.5 pigment {color rgb 0}][.6 pigment{color rgb 0}][.6 Holzpanel][1 Holzpanel]}}
 #declare OGVRGiebelWand = difference{union{prism{0,0.5,6,<0,0>,<16.5,0>,<16.5,13.5>,<8.25,17>,<0,13.5>,<0,0> rotate x*-90}
 box{<0,0,0>,<0.5,13.5,14>}
@@ -193,51 +193,48 @@ object{Kamin_2 translate<84,36,92>}
 object{Kamin_2 rotate y*90 translate<94,36,45>}
 //links
 object{Kamin_2 rotate y*90 translate<14,36,48>}
-//Haustüren
-//object{Haustuer_6_10_rund rotate y*180 translate<31,1,36.1>}
-//object{Haustuer_6_10_rund rotate y*180 translate<84,1,36.1>}
 //Fenster EG Strassenseite
-object{Fenster6x6_Rnavajo translate <5,9,0>}
-object{Fenster6x6_Rnavajo translate <15,9,0>}
-object{Fenster6x6_Rnavajo translate <25,9,0>}
-object{Fenster6x6_Rnavajo translate <35,9,0>}
-object{Fenster6x6_Rnavajo translate <45,9,0>}
-object{Fenster6x6_Rnavajo translate <55,9,0>}
-object{Fenster6x6_Rnavajo translate <65,9,0>}
-object{Fenster6x6_Rnavajo translate <75,9,0>}
-object{Fenster6x6_Rnavajo translate <85,9,0>}
-object{Fenster6x6_Rnavajo translate <95,9,0>}
+object{Fenster6x6_Rgruen translate <5,9,0>}
+object{Fenster6x6_Rgruen translate <15,9,0>}
+object{Fenster6x6_Rgruen translate <25,9,0>}
+object{Fenster6x6_Rgruen translate <35,9,0>}
+object{Fenster6x6_Rgruen translate <45,9,0>}
+object{Fenster6x6_Rgruen translate <55,9,0>}
+object{Fenster6x6_Rgruen translate <65,9,0>}
+object{Fenster6x6_Rgruen translate <75,9,0>}
+object{Fenster6x6_Rgruen translate <85,9,0>}
+object{Fenster6x6_Rgruen translate <95,9,0>}
 //Fenster Rückseite
-object{Fenster6x6_Rnavajo rotate y*180 translate <11,9,109>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <21,9,109>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <31,9,109>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <41,9,109>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <51,9,109>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <61,9,109>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <71,9,109>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <81,9,109>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <91,9,109>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <101,9,109>}
+object{Fenster6x6_Rgruen rotate y*180 translate <11,9,109>}
+object{Fenster6x6_Rgruen rotate y*180 translate <21,9,109>}
+object{Fenster6x6_Rgruen rotate y*180 translate <31,9,109>}
+object{Fenster6x6_Rgruen rotate y*180 translate <41,9,109>}
+object{Fenster6x6_Rgruen rotate y*180 translate <51,9,109>}
+object{Fenster6x6_Rgruen rotate y*180 translate <61,9,109>}
+object{Fenster6x6_Rgruen rotate y*180 translate <71,9,109>}
+object{Fenster6x6_Rgruen rotate y*180 translate <81,9,109>}
+object{Fenster6x6_Rgruen rotate y*180 translate <91,9,109>}
+object{Fenster6x6_Rgruen rotate y*180 translate <101,9,109>}
 //Fenster Hofseite
-object{Fenster6x6_Rnavajo rotate y*180 translate <45,9,72.8>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <67,9,72.8>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <49,9,36>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <63,9,36>}
+object{Fenster6x6_Rgruen rotate y*180 translate <45,9,72.8>}
+object{Fenster6x6_Rgruen rotate y*180 translate <67,9,72.8>}
+object{Fenster6x6_Rgruen rotate y*180 translate <49,9,36>}
+object{Fenster6x6_Rgruen rotate y*180 translate <63,9,36>}
 //Fenster links aussen
-object{Fenster5x6_Rnavajo rotate y*90 translate <-.1,9,16>}
-object{Fenster5x6_Rnavajo rotate y*90 translate <-.1,9,36>}
-object{Fenster5x6_Rnavajo rotate y*90 translate <-.1,9,83>}
-object{Fenster5x6_Rnavajo rotate y*90 translate <-.1,9,96>}
+object{Fenster5x6_Rgruen rotate y*90 translate <-.1,9,16>}
+object{Fenster5x6_Rgruen rotate y*90 translate <-.1,9,36>}
+object{Fenster5x6_Rgruen rotate y*90 translate <-.1,9,83>}
+object{Fenster5x6_Rgruen rotate y*90 translate <-.1,9,96>}
 //Fenster rechts aussen
-object{Fenster5x6_Rnavajo rotate y*-90 translate <110,9,11>}
-object{Fenster5x6_Rnavajo rotate y*-90 translate <110,9,31>}
-object{Fenster5x6_Rnavajo rotate y*-90 translate <110,9,78>}
-object{Fenster5x6_Rnavajo rotate y*-90 translate <110,9,91>}
+object{Fenster5x6_Rgruen rotate y*-90 translate <110,9,11>}
+object{Fenster5x6_Rgruen rotate y*-90 translate <110,9,31>}
+object{Fenster5x6_Rgruen rotate y*-90 translate <110,9,78>}
+object{Fenster5x6_Rgruen rotate y*-90 translate <110,9,91>}
 }
 //Szene=============================================================================================================
 
 union{
-object {Haus translate<-15,0,-129> texture{WandPutz}/* texture{pigment{image_map{png "diagonalesnetz_gruen.png"}}}*/}
+object {Haus translate<-15,0,-129> texture{WandPutz} texture{ pigment{image_map{png "zierstreifen_gruen.png"}}scale <1,101,1> rotate z*90 translate <-11,0,0>} texture{ pigment{image_map{png "zierstreifen_gruen.png"}}scale <1,101,1> rotate x*90 translate <0,0,-23>}}
 
 //Laternen 
 //object{Laterne_1 scale 1.4 translate <7,0,-85>}
