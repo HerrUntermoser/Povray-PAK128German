@@ -1,7 +1,7 @@
 // PoVRay 3.7
 // author: daniel_martin@gmx.at
 #version 3.7; // 3.6
-#declare Radiosity_ON = 0; 
+#declare Radiosity_ON = 1; 
 #if (Radiosity_ON = 1 )
 global_settings{
   ambient_light 1
@@ -39,19 +39,19 @@ look_at<0, 0, 0>
 }
 //=========Rückseite============
 #declare Camera_1 = camera {perspective angle 90
-                            location  <60 ,10 ,-70.0>
-                            look_at   <60 ,10,-200>}
+                            location  <100 ,10 ,70>
+                            look_at   <100 ,10,0>}
 //=============rechts==============
 #declare Camera_2 = camera {perspective angle 90
-                            location  <130 , 40 ,-100>
+                            location  <130 , 20 ,-10>
                             right x*image_width/image_height
-							look_at <0,30,-100>
+							look_at <0,20,-10>
 							}
 //==============links============
 #declare Camera_3 = camera { perspective angle 90
-                            location  <-40 , 40 ,-30>
+                            location  <-40 , 40 ,-100>
                             right x*image_width/image_height
-							look_at <0,30,-30>
+							look_at <0,30,-100>
 							}
 //=========Oben=======
 #declare Camera_4 = camera {perspective angle 90
@@ -60,9 +60,9 @@ look_at<0, 0, 0>
                             look_at   <0 , 0.0 ,-55>}
 //===============Vorderseite===============
 #declare Camera_5 = camera {perspective angle 90
-                            location  <90 ,40 ,-150>
+                            location  <0 ,20 ,-150>
                             right x*image_width/image_height
-							look_at <90,35,0>}
+							look_at <0,25,0>}
 camera {Camera_0}
 
 //===========Sonne=========================
@@ -104,6 +104,37 @@ object{Fenster_AS_6x6 translate <5,5,-0.6>}
     plane { z-y,  -sqrt(2)/2 }
     plane { -z-y, -sqrt(2)/2 }
 }
+#declare EckMuster = union{
+ box{<0,0,0>,<2.2,.75,.5>}
+ box{<0,0,0>,<1.4,.75,.5> translate<0,.85,0>}
+ box{<0,0,0>,<2.2,.75,.5> translate<0,1.7,0>}
+ box{<0,0,0>,<1.4,.75,.5> translate<0,2.55,0>}
+ box{<0,0,0>,<2.2,.75,.5> translate<0,3.4,0>}
+ box{<0,0,0>,<1.4,.75,.5> translate<0,4.25,0>}
+ box{<0,0,0>,<2.2,.75,.5> translate<0,5.15,0>}
+ box{<0,0,0>,<1.4,.75,.5> translate<0,6,0>}
+ box{<0,0,0>,<2.2,.75,.5> translate<0,6.85,0>}
+ box{<0,0,0>,<1.4,.75,.5> translate<0,7.7,0>}
+ box{<0,0,0>,<2.2,.75,.5> translate<0,8.55,0>}
+ box{<0,0,0>,<1.4,.75,.5> translate<0,9.4,0>}
+ box{<0,0,0>,<2.2,.75,.5> translate<0,10.25,0>}
+ box{<0,0,0>,<1.4,.75,.5> translate<0,11.1,0>}
+ box{<0,0,0>,<2.2,.75,.5> translate<0,11.95,0>}
+ box{<0,0,0>,<1.4,.75,.5> translate<0,12.8,0>}
+ box{<0,0,0>,<2.2,.75,.5> translate<0,13.65,0>}
+ box{<0,0,0>,<1.4,.75,.5> translate<0,14.5,0>}
+ box{<0,0,0>,<2.2,.75,.5> translate<0,15.35,0>}
+ box{<0,0,0>,<1.4,.75,.5> translate<0,16.2,0>}
+ box{<0,0,0>,<2.2,.75,.5> translate<0,17.05,0>}
+ box{<0,0,0>,<1.4,.75,.5> translate<0,17.9,0>}
+ box{<0,0,0>,<2.2,.75,.5> translate<0,18.75,0>}
+ box{<0,0,0>,<1.4,.75,.5> translate<0,19.6,0>}
+ box{<0,0,0>,<2.2,.75,.5> translate<0,20.45,0>}
+ box{<0,0,0>,<1.4,.75,.5> translate<0,21.3,0>}
+ box{<0,0,0>,<2.2,.75,.5> translate<0,22.15,0>}
+ box{<0,0,0>,<1.4,.75,.5> translate<0,23,0>}
+ texture{pigment{color rgb 1} normal {bumps scale .2}}}
+
 //=======================================================
 #declare Haus_Roh = difference {
 box{<0,0,0>,<110,25,109>}
@@ -230,6 +261,18 @@ object{Fenster5x6_Rgruen rotate y*-90 translate <110,9,11>}
 object{Fenster5x6_Rgruen rotate y*-90 translate <110,9,31>}
 object{Fenster5x6_Rgruen rotate y*-90 translate <110,9,78>}
 object{Fenster5x6_Rgruen rotate y*-90 translate <110,9,91>}
+//Eckmuster
+object{EckMuster translate<0,0,-.1>}
+object{EckMuster rotate y*180 translate<110,0,-.1>}
+//
+object{EckMuster rotate y*-90 translate<.4,0,0>}
+object{EckMuster rotate y*-90 translate<110.1,0,0>}
+//
+object{EckMuster translate<0,0,109.1>}
+object{EckMuster rotate y*180 translate<109.6,0,109.1>}
+//
+object{EckMuster rotate y*90 translate<.4,0,108.9>}
+object{EckMuster rotate y*90 translate<110.1,0,108.9>}
 }
 //Szene=============================================================================================================
 
