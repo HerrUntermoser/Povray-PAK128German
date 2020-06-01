@@ -85,7 +85,7 @@ plane { <0,1,0>, 0  pigment{ color DarkSlateGrey } translate<0,-50,0> }
 #end
 //============OBJEKTE===============================
 #declare Holzpanel = texture{DMFWood3 scale <2,1,2> finish{ambient .1 diffuse .9}}
-#declare WandPutz = texture{pigment{bumps color_map {[0 color rgb <1,.53,.3>*.5][.5  color rgb <1,.53,.3>][1  color rgb <1,.53,.3>*.9]} scale .03} finish{ambient .1 diffuse .9}}
+#declare WandPutz = texture{pigment{bumps color_map {[0 color rgb .8*.5][.5  color rgb .4][1  color rgb .8*.2]} scale .03} finish{ambient .1 diffuse .9}}
 #declare Holzlatten = texture {gradient y texture_map{[0 Holzpanel][.5 Holzpanel][.5 pigment {color rgb 0}][.6 pigment{color rgb 0}][.6 Holzpanel][1 Holzpanel]}}
 #declare OGVRGiebelWand = difference{union{prism{0,0.5,6,<0,0>,<16.5,0>,<16.5,13.5>,<8.25,17>,<0,13.5>,<0,0> rotate x*-90}
 box{<0,0,0>,<0.5,13.5,14>}
@@ -94,9 +94,9 @@ box{<0,0,0>,<0.5,13.5,14> translate<16,0,0>}
 object{Fenster_AS_6x6 translate <5,5,-0.6>}
 }
 #declare OGLRGiebelWand = difference{prism{0,0.5,4,<0,0>,<14.5,18>,<0,36>,<0,0>}object{Fenster_AS_5x6 rotate y*90 rotate z*-90 translate <4,0.6,21>}}
-#declare DachSegment_1 = difference{prism{0,73,4,<0,0>,<0,40>,<20,20>,<0,0>}prism{0,41,4,<0,0>,<0,40>,<20,20>,<0,0> translate<-.2,-.5,0>} pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}scale 8}}
-#declare DachSegment_2 = difference{prism{0,73,4,<0,0>,<0,40>,<20,20>,<0,0>}prism{0,41,4,<0,0>,<0,40>,<20,20>,<0,0> translate<-.2,-.5,0>} pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}scale 8}}
-#declare DachSegment_3 = difference{prism{0,38,4,<0,0>,<18,0>,<9,4>,<0,0>}prism{0,39,4,<0,0>,<18,0>,<9,4>,<0,0> translate<0,-.5,-.2>} pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}scale 5}}
+#declare DachSegment_1 = difference{prism{0,73,4,<0,0>,<0,40>,<20,20>,<0,0>}prism{0,41,4,<0,0>,<0,40>,<20,20>,<0,0> translate<-.2,-.5,0>} pigment{image_map{jpeg "dachziegel_alt_schnee.jpg" interpolate 2}scale 8}}
+#declare DachSegment_2 = difference{prism{0,73,4,<0,0>,<0,40>,<20,20>,<0,0>}prism{0,41,4,<0,0>,<0,40>,<20,20>,<0,0> translate<-.2,-.5,0>} pigment{image_map{jpeg "dachziegel_alt_schnee.jpg" interpolate 2}scale 8}}
+#declare DachSegment_3 = difference{prism{0,38,4,<0,0>,<18,0>,<9,4>,<0,0>}prism{0,39,4,<0,0>,<18,0>,<9,4>,<0,0> translate<0,-.5,-.2>} pigment{image_map{jpeg "dachziegel_alt_schnee.jpg" interpolate 2}scale 5}}
 #declare DachEcken = difference{
     box {<1,1,1>, <-1,0,-1>}
     plane { x-y,  -sqrt(2)/2 }
@@ -133,7 +133,7 @@ object{Fenster_AS_6x6 translate <5,5,-0.6>}
  box{<0,0,0>,<1.4,.75,.5> translate<0,21.3,0>}
  box{<0,0,0>,<2.2,.75,.5> translate<0,22.15,0>}
  box{<0,0,0>,<1.4,.75,.5> translate<0,23,0>}
- texture{pigment{color rgb 1} normal {bumps scale .2}}}
+ texture{pigment{color rgb 1*.5} normal {bumps scale .2}}}
 
 //=======================================================
 #declare Haus_Roh = difference {
@@ -195,10 +195,10 @@ object{DachSegment_1 rotate z*90 translate<92,23,71>}
 object{DachSegment_2 rotate z*90 rotate y*90 translate<72,23,18>}
 object{DachSegment_2 rotate z*90 rotate y*90 translate<-2,23,18>}
 //Dachecken
-object{DachEcken scale <20,20,20> translate<91.99,23,18.01> pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}rotate x*90 scale 8}}//rechts vorn
-object{DachEcken scale <20,20,20> translate<17.99,23,18.01> pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}rotate x*90 scale 8}}//links vorn
-object{DachEcken scale <20,20,20> translate<17.99,23,90.99>  pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}rotate x*90 scale 8}}//links hinten
-object{DachEcken scale <20,20,20> translate<91.99,23,90.99>  pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}rotate x*90 scale 8}}//rechts hinten
+object{DachEcken scale <20,20,20> translate<91.99,23,18.01> pigment{image_map{jpeg "dachziegel_alt_schnee.jpg" interpolate 2}rotate x*90 scale 8}}//rechts vorn
+object{DachEcken scale <20,20,20> translate<17.99,23,18.01> pigment{image_map{jpeg "dachziegel_alt_schnee.jpg" interpolate 2}rotate x*90 scale 8}}//links vorn
+object{DachEcken scale <20,20,20> translate<17.99,23,90.99>  pigment{image_map{jpeg "dachziegel_alt_schnee.jpg" interpolate 2}rotate x*90 scale 8}}//links hinten
+object{DachEcken scale <20,20,20> translate<91.99,23,90.99>  pigment{image_map{jpeg "dachziegel_alt_schnee.jpg" interpolate 2}rotate x*90 scale 8}}//rechts hinten
 
 //Kamine
 //vorne
@@ -216,42 +216,42 @@ object{Kamin_2 rotate y*90 translate<94,36,45>}
 //links
 object{Kamin_2 rotate y*90 translate<14,36,48>}
 //Fenster EG Strassenseite
-object{Fenster6x6_Rnavajo translate <5,9,0>}
-object{Fenster6x6_Rnavajo translate <15,9,0>}
-object{Fenster6x6_Rnavajo translate <25,9,0>}
-object{Fenster6x6_Rnavajo translate <35,9,0>}
-object{Fenster6x6_Rnavajo translate <45,9,0>}
-object{Fenster6x6_Rnavajo translate <55,9,0>}
-object{Fenster6x6_Rnavajo translate <65,9,0>}
-object{Fenster6x6_Rnavajo translate <75,9,0>}
-object{Fenster6x6_Rnavajo translate <85,9,0>}
-object{Fenster6x6_Rnavajo translate <95,9,0>}
+object{Fenster6x6_Rgruen translate <5,9,0>}
+object{Fenster6x6_Rgruen translate <15,9,0>}
+object{Fenster6x6_Rgruen translate <25,9,0>}
+object{Fenster6x6_Rgruen translate <35,9,0>}
+object{Fenster6x6_Rgruen translate <45,9,0>}
+object{Fenster6x6_Rgruen translate <55,9,0>}
+object{Fenster6x6_Rgruen translate <65,9,0>}
+object{Fenster6x6_Rgruen translate <75,9,0>}
+object{Fenster6x6_Rgruen translate <85,9,0>}
+object{Fenster6x6_Rgruen translate <95,9,0>}
 //Fenster Rückseite
-object{Fenster6x6_Rnavajo rotate y*180 translate <11,9,109>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <21,9,109>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <31,9,109>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <41,9,109>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <51,9,109>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <61,9,109>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <71,9,109>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <81,9,109>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <91,9,109>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <101,9,109>}
+object{Fenster6x6_Rgruen rotate y*180 translate <11,9,109>}
+object{Fenster6x6_Rgruen rotate y*180 translate <21,9,109>}
+object{Fenster6x6_Rgruen rotate y*180 translate <31,9,109>}
+object{Fenster6x6_Rgruen rotate y*180 translate <41,9,109>}
+object{Fenster6x6_Rgruen rotate y*180 translate <51,9,109>}
+object{Fenster6x6_Rgruen rotate y*180 translate <61,9,109>}
+object{Fenster6x6_Rgruen rotate y*180 translate <71,9,109>}
+object{Fenster6x6_Rgruen rotate y*180 translate <81,9,109>}
+object{Fenster6x6_Rgruen rotate y*180 translate <91,9,109>}
+object{Fenster6x6_Rgruen rotate y*180 translate <101,9,109>}
 //Fenster Hofseite
-object{Fenster6x6_Rnavajo rotate y*180 translate <45,9,72.8>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <67,9,72.8>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <49,9,36>}
-object{Fenster6x6_Rnavajo rotate y*180 translate <63,9,36>}
+object{Fenster6x6_Rgruen rotate y*180 translate <45,9,72.8>}
+object{Fenster6x6_Rgruen rotate y*180 translate <67,9,72.8>}
+object{Fenster6x6_Rgruen rotate y*180 translate <49,9,36>}
+object{Fenster6x6_Rgruen rotate y*180 translate <63,9,36>}
 //Fenster links aussen
-object{Fenster5x6_Rnavajo rotate y*90 translate <-.1,9,16>}
-object{Fenster5x6_Rnavajo rotate y*90 translate <-.1,9,36>}
-object{Fenster5x6_Rnavajo rotate y*90 translate <-.1,9,83>}
-object{Fenster5x6_Rnavajo rotate y*90 translate <-.1,9,96>}
+object{Fenster5x6_Rgruen rotate y*90 translate <-.1,9,16>}
+object{Fenster5x6_Rgruen rotate y*90 translate <-.1,9,36>}
+object{Fenster5x6_Rgruen rotate y*90 translate <-.1,9,83>}
+object{Fenster5x6_Rgruen rotate y*90 translate <-.1,9,96>}
 //Fenster rechts aussen
-object{Fenster5x6_Rnavajo rotate y*-90 translate <110,9,11>}
-object{Fenster5x6_Rnavajo rotate y*-90 translate <110,9,31>}
-object{Fenster5x6_Rnavajo rotate y*-90 translate <110,9,78>}
-object{Fenster5x6_Rnavajo rotate y*-90 translate <110,9,91>}
+object{Fenster5x6_Rgruen rotate y*-90 translate <110,9,11>}
+object{Fenster5x6_Rgruen rotate y*-90 translate <110,9,31>}
+object{Fenster5x6_Rgruen rotate y*-90 translate <110,9,78>}
+object{Fenster5x6_Rgruen rotate y*-90 translate <110,9,91>}
 //Eckmuster
 object{EckMuster translate<0,0,-.1>}
 object{EckMuster rotate y*180 translate<110,0,-.1>}
@@ -270,7 +270,7 @@ object{EckMuster rotate y*90 translate<110.1,0,108.9>}
 union{
 object {Haus translate<-15,0,-129> texture{WandPutz}}
 //Bodenplatte
-object {bodenplatte texture { pigment{ image_map { jpeg "grastex2.jpg" map_type 0 interpolate 2} rotate <90,0,0> scale 30} normal{bump_map{ jpeg "grastex2_tiefe.jpg" interpolate 2 bump_size 5}rotate x*90 scale 30}finish {ambient 0}}}
+object {bodenplatte texture { pigment{ image_map { jpeg "grasstex1_schnee.jpg" map_type 0 interpolate 2} rotate <90,0,0> scale 30} normal{bump_map{ jpeg "grastex2_tiefe.jpg" interpolate 2 bump_size 5}rotate x*90 scale 30}finish {ambient 0}}}
 //Ende Bodenplatte
 
 #declare Richtung = 0;

@@ -94,9 +94,9 @@ box{<0,0,0>,<0.5,13.5,14> translate<16,0,0>}
 object{Fenster_AS_6x6 translate <5,5,-0.6>}
 }
 #declare OGLRGiebelWand = difference{prism{0,0.5,4,<0,0>,<14.5,18>,<0,36>,<0,0>}object{Fenster_AS_5x6 rotate y*90 rotate z*-90 translate <4,0.6,21>}}
-#declare DachSegment_1 = difference{prism{0,73,4,<0,0>,<0,40>,<20,20>,<0,0>}prism{0,41,4,<0,0>,<0,40>,<20,20>,<0,0> translate<-.2,-.5,0>} pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}scale 8}}
-#declare DachSegment_2 = difference{prism{0,73,4,<0,0>,<0,40>,<20,20>,<0,0>}prism{0,41,4,<0,0>,<0,40>,<20,20>,<0,0> translate<-.2,-.5,0>} pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}scale 8}}
-#declare DachSegment_3 = difference{prism{0,38,4,<0,0>,<18,0>,<9,4>,<0,0>}prism{0,39,4,<0,0>,<18,0>,<9,4>,<0,0> translate<0,-.5,-.2>} pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}scale 5}}
+#declare DachSegment_1 = difference{prism{0,73,4,<0,0>,<0,40>,<20,20>,<0,0>}prism{0,41,4,<0,0>,<0,40>,<20,20>,<0,0> translate<-.2,-.5,0>} pigment{image_map{jpeg "dachziegel_alt_schnee.jpg" interpolate 2}scale 8}}
+#declare DachSegment_2 = difference{prism{0,73,4,<0,0>,<0,40>,<20,20>,<0,0>}prism{0,41,4,<0,0>,<0,40>,<20,20>,<0,0> translate<-.2,-.5,0>} pigment{image_map{jpeg "dachziegel_alt_schnee.jpg" interpolate 2}scale 8}}
+#declare DachSegment_3 = difference{prism{0,38,4,<0,0>,<18,0>,<9,4>,<0,0>}prism{0,39,4,<0,0>,<18,0>,<9,4>,<0,0> translate<0,-.5,-.2>} pigment{image_map{jpeg "dachziegel_alt_schnee.jpg" interpolate 2}scale 5}}
 #declare DachEcken = difference{
     box {<1,1,1>, <-1,0,-1>}
     plane { x-y,  -sqrt(2)/2 }
@@ -195,10 +195,10 @@ object{DachSegment_1 rotate z*90 translate<92,23,71>}
 object{DachSegment_2 rotate z*90 rotate y*90 translate<72,23,18>}
 object{DachSegment_2 rotate z*90 rotate y*90 translate<-2,23,18>}
 //Dachecken
-object{DachEcken scale <20,20,20> translate<91.99,23,18.01> pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}rotate x*90 scale 8}}//rechts vorn
-object{DachEcken scale <20,20,20> translate<17.99,23,18.01> pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}rotate x*90 scale 8}}//links vorn
-object{DachEcken scale <20,20,20> translate<17.99,23,90.99>  pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}rotate x*90 scale 8}}//links hinten
-object{DachEcken scale <20,20,20> translate<91.99,23,90.99>  pigment{image_map{jpeg "dachziegel_alt.jpg" interpolate 2}rotate x*90 scale 8}}//rechts hinten
+object{DachEcken scale <20,20,20> translate<91.99,23,18.01> pigment{image_map{jpeg "dachziegel_alt_schnee.jpg" interpolate 2}rotate x*90 scale 8}}//rechts vorn
+object{DachEcken scale <20,20,20> translate<17.99,23,18.01> pigment{image_map{jpeg "dachziegel_alt_schnee.jpg" interpolate 2}rotate x*90 scale 8}}//links vorn
+object{DachEcken scale <20,20,20> translate<17.99,23,90.99>  pigment{image_map{jpeg "dachziegel_alt_schnee.jpg" interpolate 2}rotate x*90 scale 8}}//links hinten
+object{DachEcken scale <20,20,20> translate<91.99,23,90.99>  pigment{image_map{jpeg "dachziegel_alt_schnee.jpg" interpolate 2}rotate x*90 scale 8}}//rechts hinten
 
 //Kamine
 //vorne
@@ -270,10 +270,10 @@ object{EckMuster rotate y*90 translate<110.1,0,108.9>}
 union{
 object {Haus translate<-15,0,-129> texture{WandPutz}}
 //Bodenplatte
-object {bodenplatte texture { pigment{ image_map { jpeg "grastex2.jpg" map_type 0 interpolate 2} rotate <90,0,0> scale 30} normal{bump_map{ jpeg "grastex2_tiefe.jpg" interpolate 2 bump_size 5}rotate x*90 scale 30}finish {ambient 0}}}
+object {bodenplatte texture { pigment{ image_map { jpeg "grasstex1_schnee.jpg" map_type 0 interpolate 2} rotate <90,0,0> scale 30} normal{bump_map{ jpeg "grastex2_tiefe.jpg" interpolate 2 bump_size 5}rotate x*90 scale 30}finish {ambient 0}}}
 //Ende Bodenplatte
 
-#declare Richtung = 0;
+#declare Richtung = 3;
 #switch ( Richtung )
 #case (0)
 //sued
