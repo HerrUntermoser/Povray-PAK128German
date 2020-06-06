@@ -135,11 +135,12 @@
 difference {
 box {<0,0,0>,<laenge,hoehe,breite>}       
 box {<0.5,0.5,0.5>,<laenge - 0.5,hoehe + 1,breite - 0.5> 
-//pigment{checker color rgb 1*0.2 color rgb 1*0.8}
+pigment{checker color rgb 1*0.2 color rgb 1*0.8}
 }
 }
 #end
 //Fenster Aussparung
+#macro Fenster_AS_var (l,h,b) box {<0,0,0>,<l,h,b>} #end
 #declare Fenster_AS_5x5 = box {<0,0,0>,<5,5,1>}
 #declare Fenster_AS_5x8 = box {<0,0,0>,<5,8.5,1>}
 #declare Fenster_AS_6x6 = box {<0,0,0>,<6.5,6.5,1>}
@@ -148,6 +149,38 @@ box {<0.5,0.5,0.5>,<laenge - 0.5,hoehe + 1,breite - 0.5>
 #declare Fenster_AS_7x6 = box {<0,0,0>,<7,6,1>}
 //====================================================
 //Fenster
+#macro Fenster_ML (l,h,ftex,lfarbe)
+union{
+difference{
+box {<0,0,0>,<l,h,.3>}
+box {<.3,.3,-.1>,<l - .3,h - .3,.4>}
+}
+box {<.05,.05,.1>,<l -.05,h -.05,.2> texture{Glass}}
+box{<l / 2 - .25,0,-.08>,<l / 2 + .25,h,.3>}
+box{<0,0,0>,<l / 2,h,.1> rotate y*- 1 translate <-l/2,0,-.2> texture{lfarbe}}
+box{<0,0,0>,<l / 2,h,.1> rotate y*1 translate <l-.4,0,-.1> texture{lfarbe}}
+texture{ftex finish{ambient .1 diffuse .9 specular .1}}
+}
+#end
+#macro Fenster_R (laenge,hoehe,tiefe,rot,gruen,blau)
+union{
+difference{
+box {<0,0,0>,<laenge,hoehe,0.3>}
+box {<0.2,0.2,-0.1>,<6.3,6.3,0.4>}
+}
+box {<laenge / 2 - .15,0,0>,<laenge / 2 + .15,hoehe,0.3>}
+box {<.05,.05,0.1>,<laenge-.05,hoehe-.05,.15> texture{NBoldglass}}
+//Zierstreifen
+union{
+box {<-.6,-.6,0>,<-.05,hoehe,0.1>}
+box {<laenge+.05,-.6,0>,<laenge+.6,hoehe,0.1>}
+box {<-.6,-.6,0>,<laenge+.6,-.05,0.1>}
+box {<-.6,hoehe+.05,0>,<laenge+.6,hoehe+.6,0.1>}
+ translate <0,0,-.2>
+texture{pigment{color rgb  <rot,gruen,blau>}finish{phong 0.9}}}
+texture{T_Wood1}
+}
+#end
 #declare Fenster4x5 = union {
 box {<0.2,0.2,0.05>,<3.8,4.8,0.1> texture {NBoldglass}}
                 difference {
@@ -208,6 +241,24 @@ texture{pigment{color rgb <.98,.92,.84>}finish{phong 0.9}}}
 box {<0,0,0>,<6.5,0.08,-0.4> texture{T_Copper_2A}}
 texture{pigment{color rgb 1*0.9}finish{specular 0.3 roughness 0.08}}
 }
+#macro Fenster6x6_R (rot,gruen,blau) union{
+difference{
+box {<0,0,0>,<6.5,6.5,0.3>}
+box {<0.2,0.2,-0.1>,<6.3,6.3,0.4>}
+}
+box {<3.1,0,0>,<3.4,6.5,0.3>}
+box {<0.05,0.05,0.1>,<6.45,6.45,.15> texture{NBoldglass}}
+//Zierstreifen
+union{
+box {<-.6,-.6,0>,<-0.05,6.5,0.1>}
+box {<6.55,-.6,0>,<7.1,6.5,0.1>}
+box {<-.6,-.6,0>,<7.1,-.05,0.1>}
+box {<-.6,6.55,0>,<7.1,7.1,0.1>}
+ translate <0,0,-0.2>
+texture{pigment{color rgb  <rot,gruen,blau>}finish{phong 0.9}}}
+ texture{T_Wood1}
+}
+#end
 #declare Fenster6x6_Rnavajo = union{
 difference{
 box {<0,0,0>,<6.5,6.5,0.3>}
