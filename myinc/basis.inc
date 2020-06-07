@@ -149,6 +149,16 @@ pigment{checker color rgb 1*0.2 color rgb 1*0.8}
 #declare Fenster_AS_7x6 = box {<0,0,0>,<7,6,1>}
 //====================================================
 //Fenster
+#macro Fenster (l,h,ftex)
+union{
+difference{
+box {<0,0,0>,<l,h,.3>}
+box {<.3,.3,-.1>,<l - .3,h - .3,.4>}
+}
+box {<.05,.05,.1>,<l -.05,h -.05,.2> texture{Glass}}
+texture{ftex finish{ambient .1 diffuse .9 specular .1}}
+}
+#end
 #macro Fenster_ML (l,h,ftex,lfarbe)
 union{
 difference{
@@ -162,25 +172,7 @@ box{<0,0,0>,<l / 2,h,.1> rotate y*1 translate <l-.4,0,-.1> texture{lfarbe}}
 texture{ftex finish{ambient .1 diffuse .9 specular .1}}
 }
 #end
-#macro Fenster_R (laenge,hoehe,tiefe,rot,gruen,blau)
-union{
-difference{
-box {<0,0,0>,<laenge,hoehe,0.3>}
-box {<0.2,0.2,-0.1>,<6.3,6.3,0.4>}
-}
-box {<laenge / 2 - .15,0,0>,<laenge / 2 + .15,hoehe,0.3>}
-box {<.05,.05,0.1>,<laenge-.05,hoehe-.05,.15> texture{NBoldglass}}
-//Zierstreifen
-union{
-box {<-.6,-.6,0>,<-.05,hoehe,0.1>}
-box {<laenge+.05,-.6,0>,<laenge+.6,hoehe,0.1>}
-box {<-.6,-.6,0>,<laenge+.6,-.05,0.1>}
-box {<-.6,hoehe+.05,0>,<laenge+.6,hoehe+.6,0.1>}
- translate <0,0,-.2>
-texture{pigment{color rgb  <rot,gruen,blau>}finish{phong 0.9}}}
-texture{T_Wood1}
-}
-#end
+
 #declare Fenster4x5 = union {
 box {<0.2,0.2,0.05>,<3.8,4.8,0.1> texture {NBoldglass}}
                 difference {
@@ -545,7 +537,17 @@ texture{pigment{brick
 box{<0.3,2,0.3>,<1.7,7.5,1.7> pigment {color rgb 0}}
 box{<2.3,2,0.3>,<3.7,7.5,1.7> pigment {color rgb 0}}
 }
-
+#declare Kamin_2a = difference{
+union {
+box {<0,0,0>,<4,7,2>}
+box {<-0.2,6.9,-0.2>,<4.2,7.2,2.2> texture {T_Grnt15 scale 0.5}}
+texture{pigment{bozo turbulence .7
+                color_map{[0 White*1][1 color rgb .5*1.1]}
+                }scale .5}
+}
+box{<0.3,2,0.3>,<1.7,7.5,1.7> pigment {color rgb 0}}
+box{<2.3,2,0.3>,<3.7,7.5,1.7> pigment {color rgb 0}}
+}
 #declare Kamin_3 = difference{
 union {
 box {<0,0,0>,<12,7,3>}

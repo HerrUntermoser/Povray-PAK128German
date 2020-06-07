@@ -39,8 +39,8 @@ look_at<0, 0, 0>
 }
 //=========Rückseite============
 #declare Camera_1 = camera {perspective angle 90
-                            location  <100 ,10 ,70>
-                            look_at   <100 ,10,0>}
+                            location  <10 ,10 ,70>
+                            look_at   <10 ,10,0>}
 //=============rechts==============
 #declare Camera_2 = camera {perspective angle 90
                             location  <90 , 20 ,0>
@@ -55,14 +55,14 @@ look_at<0, 0, 0>
 							}
 //=========Oben=======
 #declare Camera_4 = camera {perspective angle 90
-                            location  <0 , 90 ,-50>
+                            location  <0 , 90 ,20>
                             right     x*image_width/image_height
-                            look_at   <0 , 0.0 ,-55>}
+                            look_at   <0 , 0.0 ,25>}
 //===============Vorderseite===============
 #declare Camera_5 = camera {perspective angle 90
-                            location  <20 ,20 ,-55>
+                            location  <20 ,30 ,-25>
                             right x*image_width/image_height
-							look_at <15,20,0>}
+							look_at <15,30,0>}
 camera {Camera_0}
 
 //===========Sonne=========================
@@ -90,23 +90,44 @@ plane { <0,1,0>, 0  pigment{ color DarkSlateGrey } translate<0,-50,0> }
 
 
 //=======================================================
-#declare Haus = difference{
+#declare dach = prism{0,40,4, <0,0>,<15,12>,<0,24>,<0,0> texture{pigment{color rgb <0,0,1>*.5}}}
+#declare Dachfenster = union{
+difference{box{<0,0,0>,<7,7,8>}object{Fenster_AS_5x5 translate<1,1,-.1>}}
+object{Fenster(5,5,texture{pigment{color rgb .2*.5}finish{ambient .2 diffuse .8 specular .1}}) translate<1,1,.1>}
+box{<0,0,0>,<7.5,.1,8> translate<-.25,7.05,-.1> texture{T_Copper_1A}}
+box{<0,0,0>,<7,-1,.2> rotate x*38.65 translate<0,.1,0>}
+texture{pigment{color rgb .5*.7}finish{ambient .2 diffuse .8 specular .1}}}
+#declare Haus = union{
+difference{
 object{ Rohbau(40,18,20)}
-object{Fenster_AS_5x6 translate<2,7,-.1>}
-object{Fenster_AS_5x6 translate<33,7,-.1>}
+object{Fenster_AS_5x6 translate<2.5,7,-.1>}
+object{Fenster_AS_5x6 translate<32.5,7,-.1>}
 object{Fenster_AS_var (3,3,1) translate<11,10,-.1>}
 object{Fenster_AS_var (3,3,1) translate<26,10,-.1>}
 object{Haust_AS_7_11 translate<16.5,.1,-.1>}
+//Hinten
+object{Fenster_AS_5x6 translate<2.5,7,19.4>}
+object{Fenster_AS_5x6 translate<17.5,7,19.4>}
+object{Fenster_AS_5x6 translate<32.5,7,19.4>}
 }
-#declare dach = prism{0,40,4, <0,0>,<15,12>,<0,24>,<0,0> texture{pigment{color rgb <0,0,1>*.5}}}
+object{dach rotate z*90 translate<40,18,-2>}
+object{Fenster_ML(5,6,T_Wood1, texture {pigment{ color rgb .7*.7}}) translate<2.5,7,.1>}
+object{Fenster_ML(5,6,T_Wood1, texture {pigment{ color rgb .7*.7}}) rotate y*180 translate<7.5,7,20.1>}
+object{Fenster_ML(5,6,T_Wood1, texture {pigment{ color rgb .7*.7}}) translate<32.5,7,.1>}
+object{Fenster_ML(5,6,T_Wood1, texture {pigment{ color rgb .7*.7}}) rotate y*180 translate<37.5,7,20.1>}
+object{Fenster_ML(5,6,T_Wood1, texture {pigment{ color rgb .7*.7}}) rotate y*180 translate<22.5,7,20.1>}
+object{Fenster(3,3,texture{pigment{color rgb 1}}) translate<11,10,.1>}
+object{Fenster(3,3,texture{pigment{color rgb 1}}) translate<26,10,.1>}
+object{Dachfenster translate<16.5,21,0>}
+object{Kamin_2a rotate y*90  translate<27,27,10>}
+}
+
 //Szene=============================================================================================================
 
 union{
 object {Haus texture{WandPutz}}
-object{dach rotate z*90 translate<40,18,-2>}
-object{Fenster_ML(5,6,T_Wood1, texture {pigment{ color rgb .7*.7}}) translate<2.5,7,.1>}
 //Bodenplatte
-object {bodenplatte texture { pigment{ image_map { jpeg "grasstex1.jpg" map_type 0 interpolate 2} rotate <90,0,0> scale 40}/* normal{bump_map{ jpeg "grastex2_tiefe.jpg" interpolate 2 bump_size 5}rotate x*90 scale 30}*/finish {ambient 0}}}
+object {bodenplatte texture { pigment{ image_map { jpeg "grasstex1.jpg" map_type 0 interpolate 2} rotate <90,0,0> scale 40*2}/* normal{bump_map{ jpeg "grastex2_tiefe.jpg" interpolate 2 bump_size 5}rotate x*90 scale 30}*/finish {ambient 0}}}
 //Ende Bodenplatte
 
 #declare Richtung = 0;
