@@ -478,6 +478,13 @@ sphere{<0,0,0>,0.2 translate <0.4,5,0> texture{T_Chrome_1A}}
  box{<-.2,10.9,-.1>,<7.2,11.2,0>}
  sphere {<1,5,0>,0.3 texture{T_Brass_1A}}
  texture{T_Wood22 scale 0.5}}
+ #declare Haustuer_7_11_rgrau = union{
+ box{<0,0,0>,<7,11,0.2> texture{pigment{image_map{tga "parkett_braun_alt.tga" map_type 0 interpolate 3}} scale 2.5}}
+ box{<-1,0,-.3>,<0,11,0> pigment{color rgb <.38,.4,.47>*.5}}
+ box{<7,0,-.3>,<8,11,0> pigment{color rgb <.38,.4,.47>*.5}}
+ box{<-1,10.9,-.3>,<7.9,12,0> pigment{color rgb <.38,.4,.47>*.5}}
+ sphere {<1,5,0>,0.3 texture{T_Brass_1A}}
+ }
  #declare Haustuer_6_10 = union{
  difference{
  box{<0,0,0>,<6,10,0.2>}

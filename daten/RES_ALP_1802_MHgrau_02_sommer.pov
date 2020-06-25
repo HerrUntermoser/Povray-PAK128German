@@ -152,6 +152,9 @@ object{Dachfenster translate<16.5,21,0>}
 object{Kamin_2a rotate y*90  translate<27,27,10>}
 box{<0,0,0>,<7,2,.1> translate<16.5,12,-.1> pigment{image_map{tga "greenalpha.tga" interpolate 2}scale 2}}
 cylinder{<0,0,0>,<0,18,0>,.2 translate<39,0,-.2> texture{T_Copper_2A}}
+//pseudogebuesch
+box{<0,0,0>,<16,6,-.4> translate<0,-1,-8> pigment{image_map{png "pseudogebuesch.png" map_type 0 interpolate 2}scale <16,6,1>}}
+box{<0,0,0>,<16,6,-.4> translate<23.6,-1,-8> pigment{image_map{png "pseudogebuesch.png" map_type 0 interpolate 2}scale <16,6,1>}}
 }
 #declare gehweg = box{<0,0,0>,<7,.1,8> texture {pigment{image_map{jpeg "pflastersteine.jpeg" interpolate 2}} rotate x*90 scale 10}}
 #declare Waescheleine = union{
