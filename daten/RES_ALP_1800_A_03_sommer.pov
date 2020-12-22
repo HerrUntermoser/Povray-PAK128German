@@ -142,7 +142,10 @@ box {<0,0,0>,<1,8.5,5> translate <-0.2,4,33>}
 //1.            
 box {<0,0,0>,<1,8.5,5> translate <-0.4,22,12>}
 box {<0,0,0>,<1,8.5,5> translate <-0.4,22,33>}
-
+//Fensteraussparungen 1
+box {<0,0,0>,<5,8.5,1> translate <10,22,-0.2>}
+box {<0,0,0>,<5,8.5,1> translate <32.75,22,-0.2>}
+box {<0,0,0>,<5,8.5,1> translate <55,22,-0.2>}
 //Fensteraussparungen rechts
 box {<0,0,0>,<1,8.5,5> translate <69.2,4,12>}
 box {<0,0,0>,<1,8.5,5> translate <69.2,4,33>}
@@ -204,6 +207,10 @@ object {Fenster5x8_5_L rotate <0,-90,0> translate <90,4,-67>}
 //Fenster 1-rechts
 object {Fenster5x8_5_L rotate <0,-90,0> translate <90,22,-88>}
 object {Fenster5x8_5_L rotate <0,-90,0> translate <90,22,-67>}
+//Fenster 1
+object {Fenster5x8_5_L translate <30,22,-100>}
+object {Fenster5x8_5_L translate <52.75,22,-100>}
+object {Fenster5x8_5_L translate <75,22,-100>}
 //Haustür
 union{
 difference{
