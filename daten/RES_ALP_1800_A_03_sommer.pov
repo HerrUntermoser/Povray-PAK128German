@@ -31,6 +31,7 @@ global_settings{ assumed_gamma 1.1 }
 #include "woods.inc"
 #include "basis.inc"
 #include "kleinkram.inc"
+#include "Taubenschlag_geom.inc"
 
   #declare Camera_0 = camera{
   orthographic
@@ -41,14 +42,14 @@ look_at<0, 0, 0>
                             location  <20 ,65.0 ,30.0>
                             look_at   <20 ,65,0>}
 #declare Camera_2 = camera {perspective angle 90//rechts
-                            location  <130 , 10 ,-50>
+                            location  <130 , 40 ,-50>
                             right x*image_width/image_height
-							look_at <0,10,-50>
+							look_at <0,40,-50>
 							}
 #declare Camera_3 = camera { perspective angle 90//links
                             location  <-30 , 46 ,-70>
                             right x*image_width/image_height
-							look_at <0,28,-70>
+							look_at <0,38,-70>
 							}
 
 #declare Camera_4 = camera {perspective angle 90        // oben
@@ -97,18 +98,6 @@ texture{ pigment{ bumps turbulence 2 color_map{[0.0 color rgb <.95,.95,.96>]
 
 }} finish {ambient 0.3}
        }
-#declare Fenster5x8_5_L = union {
-box {<0.2,0.2,0.05>,<4.8,8.3,0.1> texture {Glass}}
-                difference {
-                box {<0,0,0>,<5,8.5,0.2>}
-                box {<0.2,0.2,-0.1>,<4.8,8.3,0.25>}
-                }
-                box {<0,6.2,0>,<5,6.4,0.2>}
-                box {<2.4,0,0>,<2.6,6.4,0.2>}
-box{<0,0,0>,<2.5,8.5,-0.1> rotate y*-2 translate <-2.5,0,0>}
-box{<2.5,0,0>,<5,8.5,-0.1> rotate y*2 translate <2.5,0,0>}
-                texture{pigment{color rgb <.39,.07,.07>*1.1}}
-                }
 #declare FirstTextur = texture{pigment{ gradient x color_map{ [0.0 color DarkSlateGrey*0.4][0.9 color DarkSlateGrey][0.9 color rgb 0.2][1.0 color rgb 0.2]}}scale 2 finish{ambient 0}}
 #declare Haus_Roh =
 union{
@@ -146,16 +135,22 @@ box {<0,0,0>,<1,8.5,5> translate <-0.4,22,33>}
 box {<0,0,0>,<5,8.5,1> translate <10,22,-0.2>}
 box {<0,0,0>,<5,8.5,1> translate <32.75,22,-0.2>}
 box {<0,0,0>,<5,8.5,1> translate <55,22,-0.2>}
+//Fensteraussparungen 1 Vorderseite
+box {<0,0,49>,<5,8.5,50> translate <10,22,0.2>}
+box {<0,0,49>,<5,8.5,50> translate <55,22,0.2>}
 //Fensteraussparungen rechts
 box {<0,0,0>,<1,8.5,5> translate <69.2,4,12>}
 box {<0,0,0>,<1,8.5,5> translate <69.2,4,33>}
-//1.            8.5
+//1.
 box {<0,0,0>,<1,8.5,5> translate <69.4,22,12>}
 box {<0,0,0>,<1,8.5,5> translate <69.4,22,33>}
 //Fensteraussparungen EG-R
 box {<0,0,49>,<5,8.5,50> translate <10,4,0.2>}
 box {<0,0,49>,<7,10,50> translate <32,0.5,0.2>}
 box {<0,0,49>,<5,8.5,50> translate <55,4,0.2>}
+//2 OG links und rechts
+box {<0,0,0>,<2,8.5,5> translate <69.3,43,22>}
+box {<0,0,0>,<2,8.5,5> translate <-0.2,43,22>}
 }
 //Ziersockel unten
 box {<-0.3,-0.05,-0.3>,<70.3,0.7,50.3> texture {T_Stone31 scale 0.05}}
@@ -163,6 +158,10 @@ box {<-0.3,-0.05,-0.3>,<70.3,0.7,50.3> texture {T_Stone31 scale 0.05}}
 box {<-0.3,16.3,-0.3>,<70.3,16.7,50.3> texture {pigment{color rgb <0.89,0.85,0.65>*0.5}}}
 box {<-0.5,16.7,-0.5>,<70.5,16.9,50.5> texture {pigment{color rgb <0.89,0.85,0.65>*0.6} normal {bumps 0.5 scale 0.08}}}
 box {<-0.7,16.9,-0.7>,<70.7,17.2,50.7> texture {pigment{color rgb <0.89,0.85,0.65>*0.7} normal {bumps 0.5 scale 0.08}}}
+ //Ziersockel OG -> 2.
+box {<-0.3,36.3,-0.3>,<70.3,36.7,50.3> texture {pigment{color rgb <0.89,0.85,0.65>*0.5}}}
+box {<-0.5,36.7,-0.5>,<70.5,36.9,50.5> texture {pigment{color rgb <0.89,0.85,0.65>*0.6} normal {bumps 0.5 scale 0.08}}}
+box {<-0.7,36.9,-0.7>,<70.7,37.2,50.7> texture {pigment{color rgb <0.89,0.85,0.65>*0.7} normal {bumps 0.5 scale 0.08}}}
  texture {Wand_Farbe_1}
  }
 #declare Giebel = prism {0,1,4,<0,0>,<12,0>,<6,5>,<0,0>}
@@ -173,7 +172,7 @@ box {<0,0,0>,<0.1,5,2> texture{gradient z texture_map{BalkonPfosten}}}
 box {<14.9,0,0>,<15,5,2> texture{gradient z texture_map{BalkonPfosten}}}
 }
 #declare WDR = cylinder {<0,0,0>,<70,0,0>,0.5 texture {T_Brass_1A}}
-#declare SDR = cylinder {<0,0,0>,<0,23,0>,0.4 texture {T_Brass_1A}}
+#declare SDR = cylinder {<0,0,0>,<0,43,0>,0.4 texture {T_Brass_1A}}
 #declare Zaun_Saeule = box{<0,0,0>,<1.5,6.5,1.5> texture{T_Stone28 scale 0.7} texture{pigment{brick 
                 White*0.2
                 Clear
@@ -189,28 +188,34 @@ union{
 object {Haus_Roh translate <20,0,-100>}
 
 //Fenster EG
-object {Fenster5x8_5_L translate <30,4,-100>}
-object {Fenster5x8_5_L translate <52.75,4,-100>}
-object {Fenster5x8_5_L translate <75,4,-100>}
+object {Fenster5x8_5_L translate <30,4,-100> texture{pigment{color rgb <.39,.07,.07>*1.1}}}
+object {Fenster5x8_5_L translate <52.75,4,-100> texture{pigment{color rgb <.39,.07,.07>*1.1}}}
+object {Fenster5x8_5_L translate <75,4,-100> texture{pigment{color rgb <.39,.07,.07>*1.1}}}
 //Fenster EG-R
-object {Fenster5x8_5_L rotate <0,180,0> translate <35,4,-50.2>}
-object {Fenster5x8_5_L rotate <0,180,0> translate <80,4,-50.2>}
+object {Fenster5x8_5_L rotate <0,180,0> translate <35,4,-50.2> texture{pigment{color rgb <.39,.07,.07>*1.1}}}
+object {Fenster5x8_5_L rotate <0,180,0> translate <80,4,-50.2> texture{pigment{color rgb <.39,.07,.07>*1.1}}}
 //Fenster EG-links
-object {Fenster5x8_5_L rotate <0,90,0> translate <20,4,-83>}
-object {Fenster5x8_5_L rotate <0,90,0> translate <20,4,-62>}
+object {Fenster5x8_5_L rotate <0,90,0> translate <20,4,-83> texture{pigment{color rgb <.39,.07,.07>*1.1}}}
+object {Fenster5x8_5_L rotate <0,90,0> translate <20,4,-62> texture{pigment{color rgb <.39,.07,.07>*1.1}}}
 //Fenster 1-links
-object {Fenster5x8_5_L rotate <0,90,0> translate <20,22,-83>}
-object {Fenster5x8_5_L rotate <0,90,0> translate <20,22,-62>}
+object {Fenster5x8_5_L rotate <0,90,0> translate <20,22,-83> texture{pigment{color rgb <.39,.07,.07>*1.1}}}
+object {Fenster5x8_5_L rotate <0,90,0> translate <20,22,-62> texture{pigment{color rgb <.39,.07,.07>*1.1}}}
 //Fenster EG-rechts
-object {Fenster5x8_5_L rotate <0,-90,0> translate <90,4,-88>}
-object {Fenster5x8_5_L rotate <0,-90,0> translate <90,4,-67>}
+object {Fenster5x8_5_L rotate <0,-90,0> translate <90,4,-88> texture{pigment{color rgb <.39,.07,.07>*1.1}}}
+object {Fenster5x8_5_L rotate <0,-90,0> translate <90,4,-67> texture{pigment{color rgb <.39,.07,.07>*1.1}}}
 //Fenster 1-rechts
-object {Fenster5x8_5_L rotate <0,-90,0> translate <90,22,-88>}
-object {Fenster5x8_5_L rotate <0,-90,0> translate <90,22,-67>}
+object {Fenster5x8_5_L rotate <0,-90,0> translate <90,22,-88> texture{pigment{color rgb <.39,.07,.07>*1.1}}}
+object {Fenster5x8_5_L rotate <0,-90,0> translate <90,22,-67> texture{pigment{color rgb <.39,.07,.07>*1.1}}}
 //Fenster 1
-object {Fenster5x8_5_L translate <30,22,-100>}
-object {Fenster5x8_5_L translate <52.75,22,-100>}
-object {Fenster5x8_5_L translate <75,22,-100>}
+object {Fenster5x8_5_L translate <30,22,-100> texture{pigment{color rgb <.39,.07,.07>*1.1}}}
+object {Fenster5x8_5_L translate <52.75,22,-100> texture{pigment{color rgb <.39,.07,.07>*1.1}}}
+object {Fenster5x8_5_L translate <75,22,-100> texture{pigment{color rgb <.39,.07,.07>*1.1}}}
+//Fenster 1 Vorderseite
+object {Fenster5x8_5_L rotate <0,180,0> translate <35,22,-50> texture{pigment{color rgb <.39,.07,.07>*1.1}}}
+object {Fenster5x8_5_L rotate <0,180,0> translate <80,22,-50> texture{pigment{color rgb <.39,.07,.07>*1.1}}}
+//2.OG links und rechts
+object {Fenster5x8_5_L rotate <0,-90,0> translate <90,43,-78> texture{pigment{color rgb <.39,.07,.07>*1.1}}}
+object {Fenster5x8_5_L rotate <0,90,0> translate <20,43,-73> texture{pigment{color rgb <.39,.07,.07>*1.1}}}
 //Haustür
 union{
 difference{
@@ -229,20 +234,19 @@ cylinder {<0,0,0>,<0,0,-2.9>,0.2 rotate x*30 translate <7.1,9,0> texture {New_Br
 rotate y*180
 translate <59,0.5,-50>}
 //Dachrinnen
-object {WDR translate<20,21,-101>}
+object {WDR translate<20,43,-101>}
 object {SDR translate<43,0,-100.5>}
 object {SDR translate<67,0,-100.5>}
 
-object {WDR translate<20,21,-48>}
-object {SDR translate<43,-1,-48>}
-object {SDR translate<67,-1,-48>}
+object {WDR translate<20,43,-49>}
+object {SDR translate<43,-1,-49>}
+object {SDR translate<67,-1,-49>}
 //Dachflaechen
 //vorne
 #declare XL = 19;
 #declare endx = 90;
-/*
 #while (XL <= endx)
-object{Dachziegelengobiert (37) rotate x*45 translate <XL,21.4,-101> texture{pigment{gradient y color_map {[0.0 color rgb 0.3*0.7]
+object{Dachziegelengobiert (37) rotate x*45 translate <XL,43.4,-101> texture{pigment{gradient y color_map {[0.0 color rgb <.39,.06,.08>*0.7]
                                                                                                 [0.9 color rgb 0.3*0.5]
                                                                                                 [0.9 color rgb 0.1]
                                                                                                 [1 color rgb 0.1]
@@ -256,7 +260,7 @@ object{Dachziegelengobiert (37) rotate x*45 translate <XL,21.4,-101> texture{pig
 #declare endxLH = 90;
 
 #while (XLH <= endxLH)
-object{Dachziegelengobiert (37) rotate x*-45 translate <XLH,21.4,-49> texture{pigment{gradient y color_map {[0.0 color rgb 0.3*0.7]
+object{Dachziegelengobiert (37) rotate x*-45 translate <XLH,43.4,-49> texture{pigment{gradient y color_map {[0.0 color rgb <.39,.06,.08>*0.7]
                                                                                                 [0.9 color rgb 0.3*0.5]
                                                                                                 [0.9 color rgb 0.1]
                                                                                                 [1 color rgb 0]
@@ -266,10 +270,10 @@ object{Dachziegelengobiert (37) rotate x*-45 translate <XLH,21.4,-49> texture{pi
 #declare XLH = XLH + 2.8;
 #end
 //Dachfirst
-cylinder {<0,0,0>,<72,0,0>,0.5 translate <20,47,-75> texture{FirstTextur}}
+cylinder {<0,0,0>,<72,0,0>,0.5 translate <20,67,-75> texture{FirstTextur}}
 //Kamin
-object{Kamin_2 translate<50,42,-76>}
-
+object{Kamin_2 translate<50,63,-78>}
+object{Kamin_2 translate<50,63,-71>}
 object{Zaun_Saeule translate<-20,0,-15>}//linkshinten
 object{Zaun_Saeule translate<-20,0,-15>}//linksvorne
 object{Zaun_Saeule translate<-20,0,-73>}//linksmitte
@@ -301,46 +305,13 @@ object{Zaun_Pfosten translate <xHstart,0,-14.8>}
 #while (xVstart <= xVende)
 object{Zaun_Pfosten translate <xVstart,0,-133.8>}
 #declare xVstart = xVstart + 0.7;
-#end*/
+#end
 //Kisten
-object {Kiste_1 translate<20,0,-35> texture{T_Wood24 scale .8}}
-object {Kiste_1 rotate y*23 translate<25,0,-35> texture{T_Wood24 scale .8}}
-object {Kiste_1 translate<20,0,-39.5> texture{T_Wood24 scale .8}}
+object {Waeschestange  scale 2 translate<-5,0,-55>}
 //Tisch
 object{Table (8,3,5,0.1,0.4) translate<30,0,-45> texture{DMFWood2}}
-//Kunstwerk
-intersection{
-box {<-0.5,-0.5,-0.5>,< 0.5,0.5,0.5>
-     texture{T_Stone18 scale 0.5} }
-sphere{<0,0,0>,0.66
-     texture{T_Stone21} }
-cylinder{<0,0,-1>,<0,0,1>,0.3 inverse
-  texture{pigment{color YellowGreen}
-          finish {phong 0.5}}}
-cylinder{<0,-1,0>,<0,1,0>,0.3 inverse
-  texture{pigment{color YellowGreen}
-          finish {phong 0.5}}}
-cylinder{<-1,0,0>,<1,0,0>,0.3 inverse
-  texture{pigment{color YellowGreen}
-          finish {phong 0.5}}}
-scale 5 translate <65,0,-40>}
-intersection{
-box {<-0.5,-0.5,-0.5>,< 0.5,0.5,0.5>
-     texture{T_Stone18 scale 0.5} }
-sphere{<0,0,0>,0.66
-     texture{T_Stone21} }
-cylinder{<0,0,-1>,<0,0,1>,0.3 inverse
-  texture{pigment{color YellowGreen}
-          finish {phong 0.5}}}
-cylinder{<0,-1,0>,<0,1,0>,0.3 inverse
-  texture{pigment{color YellowGreen}
-          finish {phong 0.5}}}
-cylinder{<-1,0,0>,<1,0,0>,0.3 inverse
-  texture{pigment{color YellowGreen}
-          finish {phong 0.5}}}
-scale 5 rotate y*27 translate <70,0,-28>}
 //Kiesfläche
-box {<-19,-0.1,-14>,<99,0.05,-60>texture{ pigment{image_map{jpeg "kies_grob.jpg" map_type 0 interpolate 2} rotate x*90 scale <10,1,10>}
+box {<-19,-0.1,-14>,<99,0.05,-60>texture{ pigment{image_map{jpeg "pflastersteine.jpeg" map_type 0 interpolate 2} rotate x*90 scale <10,1,10>}
                  finish { diffuse 0.9}
                } }
 //Bäume
@@ -449,32 +420,33 @@ object{ Tree_01
 
 #include "kiefer.inc"
 union {
-object{FOLIAGE}
+object{FOLIAGE texture{Blaetter_Sommer2}}
 object{WOOD}
 double_illuminate hollow
 scale 25
 translate <40,0,-120>
 }
 union {
-object{FOLIAGE}
+object{FOLIAGE texture{Blaetter_Sommer1}}
 object{WOOD}
 double_illuminate hollow
 scale 28
 translate <-10,0,-110>
 }
 union {
-object{FOLIAGE}
+object{FOLIAGE texture{Blaetter_Sommer2}}
 object{WOOD}
 double_illuminate hollow
 scale 24
 rotate y*45
 translate <-10,0,-70>
 }
-
+//Taubenschlag
+object{Taubenschlag_Taubenschlag_ scale .002 translate <70,0,-20> material{Taubenschlag_}}
 //Bodenplatte
 object {bodenplatte texture { pigment{ image_map { jpeg "grasstex1.jpg" map_type 0 interpolate 2}} rotate x*90 scale 15 finish {ambient 0}}}
 
-#declare Richtung = 0;
+#declare Richtung = 3;
 #switch ( Richtung )
 #case (0)
 //sued
