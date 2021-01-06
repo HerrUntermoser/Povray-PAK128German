@@ -92,9 +92,9 @@ plane { <0,1,0>, 0  hollow
 #declare BalkonPfosten = texture_map{[0.0 T_Wood12][0.6 T_Wood26][0.7 T_Wood12][0.7 TTrans][0.9 BT][1.0 BT]}
 #declare HT = texture {pigment {color DarkSlateBlue}}
 #declare Wand_Farbe_1 =
-texture{ pigment{ bumps turbulence 2 color_map{[0.0 color rgb <.95,.95,.96>]
-                                                [0.5 color rgb <1,1,1>*1.1]
-                                                [1.0 color rgb <.87,.87,.88>*.8]
+texture{ pigment{ bumps turbulence 2 color_map{[0.0 color rgb <.9,.454,0>]
+                                                [.3 color rgb <.9,.22,0>*.8]
+                                                [1.0 color rgb <.9,.22,0>]
 
 }} finish {ambient 0.3}
        }
@@ -315,7 +315,7 @@ box {<-19,-0.1,-14>,<99,0.05,-60>texture{ pigment{image_map{jpeg "pflastersteine
                  finish { diffuse 0.9}
                } }
 //Bäume
-
+/*
 #include "birke.inc"
 
 #declare LEAVES=300*BUNCHES;
@@ -440,7 +440,7 @@ double_illuminate hollow
 scale 24
 rotate y*45
 translate <-10,0,-70>
-}
+}*/
 //Taubenschlag
 object{Taubenschlag_Taubenschlag_ scale .002 translate <70,0,-20> material{Taubenschlag_}}
 //Bodenplatte
