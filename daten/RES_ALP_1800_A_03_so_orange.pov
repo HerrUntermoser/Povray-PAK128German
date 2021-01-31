@@ -315,7 +315,7 @@ box {<-19,-0.1,-14>,<99,0.05,-60>texture{ pigment{image_map{jpeg "pflastersteine
                  finish { diffuse 0.9}
                } }
 //Bäume
-/*
+
 #include "birke.inc"
 
 #declare LEAVES=300*BUNCHES;
@@ -440,7 +440,7 @@ double_illuminate hollow
 scale 24
 rotate y*45
 translate <-10,0,-70>
-}*/
+}
 //Taubenschlag
 object{Taubenschlag_Taubenschlag_ scale .002 translate <70,0,-20> material{Taubenschlag_}}
 //Bodenplatte

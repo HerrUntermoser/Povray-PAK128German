@@ -1,7 +1,7 @@
 // PoVRay 3.7
 // author: daniel_martin@gmx.at
 #version 3.7; // 3.6
-#declare Radiosity_ON =0; 
+#declare Radiosity_ON =1; 
 #if (Radiosity_ON = 1 )
 global_settings{
   ambient_light 1
@@ -92,9 +92,9 @@ plane { <0,1,0>, 0  hollow
 #declare BalkonPfosten = texture_map{[0.0 T_Wood12][0.6 T_Wood26][0.7 T_Wood12][0.7 TTrans][0.9 BT][1.0 BT]}
 #declare HT = texture {pigment {color DarkSlateBlue}}
 #declare Wand_Farbe_1 =
-texture{ pigment{ bumps turbulence 2 color_map{[0.0 color rgb <.95,.95,.96>]
-                                                [0.5 color rgb <1,1,1>*1.1]
-                                                [1.0 color rgb <.87,.87,.88>*.8]
+texture{ pigment{ bumps turbulence 2 color_map{[0.0 color rgb <.9,.454,0>]
+                                                [.3 color rgb <.9,.22,0>*.8]
+                                                [1.0 color rgb <.9,.22,0>]
 
 }} finish {ambient 0.3}
        }
@@ -246,7 +246,7 @@ object {SDR translate<67,-1,-49>}
 #declare XL = 19;
 #declare endx = 90;
 #while (XL <= endx)
-object{Dachziegelengobiert (37) rotate x*45 translate <XL,43.4,-101> texture{pigment{gradient y color_map {[0.0 color rgb <.39,.06,.08>*0.7]
+object{Dachziegelengobiert (37) rotate x*45 translate <XL,43.4,-101> texture{pigment{gradient y color_map {[0.0 color rgb 1*0.7]
                                                                                                 [0.9 color rgb 0.3*0.5]
                                                                                                 [0.9 color rgb 0.1]
                                                                                                 [1 color rgb 0.1]
@@ -260,9 +260,9 @@ object{Dachziegelengobiert (37) rotate x*45 translate <XL,43.4,-101> texture{pig
 #declare endxLH = 90;
 
 #while (XLH <= endxLH)
-object{Dachziegelengobiert (37) rotate x*-45 translate <XLH,43.4,-49> texture{pigment{gradient y color_map {[0.0 color rgb <.39,.06,.08>*0.7]
+object{Dachziegelengobiert (37) rotate x*-45 translate <XLH,43.4,-49> texture{pigment{gradient y color_map {[0.0 color rgb 1*0.7]
                                                                                                 [0.9 color rgb 0.3*0.5]
-                                                                                                [0.9 color rgb 0.1]
+                                                                                                [0.9 color rgb 1]
                                                                                                 [1 color rgb 0]
                                                                                                 }
  
@@ -311,14 +311,14 @@ object {Waeschestange  scale 2 translate<-5,0,-55>}
 //Tisch
 object{Table (8,3,5,0.1,0.4) translate<30,0,-45> texture{DMFWood2}}
 //Kiesfläche
-box {<-19,-0.1,-14>,<99,0.05,-60>texture{ pigment{image_map{jpeg "pflastersteine.jpeg" map_type 0 interpolate 2} rotate x*90 scale <10,1,10>}
+box {<-19,-0.1,-14>,<99,0.05,-60>texture{ pigment{image_map{jpeg "kies_grob_schnee.jpg" map_type 0 interpolate 2} rotate x*90 scale <10,1,10>}
                  finish { diffuse 0.9}
                } }
 //Bäume
 
 #include "birke.inc"
 
-#declare LEAVES=300*BUNCHES;
+#declare LEAVES=1*BUNCHES;
 #declare BOTTOM_COLOR_1=<0.3,0.4,0,0,0>;
 #declare BOTTOM_COLOR_2=<0.4,0.5,0,0,0>;
 #declare TOP_COLOR_1=<.12,.30,.17,0,0>;
@@ -326,53 +326,19 @@ box {<-19,-0.1,-14>,<99,0.05,-60>texture{ pigment{image_map{jpeg "pflastersteine
 
 #include "TOMTREE-1.5.inc"
 #declare Tree_01 = object{ TREE double_illuminate hollow}
-#declare RINDE = texture {
-	pigment {
-		granite
-		cubic_wave
-		color_map {
-			[0 color rgb <0.35, 0.25, 0.17>]
-			[0.35 color rgb <0.49019, 0.34117, 0.21176>]
-			[0.5 color rgb <0.49019, 0.34117, 0.21176>*2]
-			[0.65 color rgb <0.49019, 0.34117, 0.21176>]
-			[1 color rgb <0.35, 0.25, 0.17>]
-		}
-		scale <1.0, 10.0, 1.0>*3
-	}
-	finish {
-		phong -1.0/5 phong_size 4
-	}
-}
-#declare RINDE1 = texture {
-	pigment {
-		granite
-		cubic_wave
-		color_map {
-			[0 color rgb <0.35, 0.25, 0.17>]
-			[0.35 color rgb <0.0, 1.2, 0.0>/4]
-			[0.50 color rgb <0.0, 1.2, 0.0>/2]
-			[0.65 color rgb <0.0, 1.2, 0.0>/4]
-			[1 color rgb <0.35, 0.25, 0.17>]
-		}
-		scale <1.0, 10.0, 1.0>*3
-	}
-	finish {
-		phong -1.0/5 phong_size 4
-	}
-}
 #declare BOZO1 = pigment {
 	bozo
 	color_map {
-		[0 color rgb <.12,.30,.17>]
-		[1 color rgb <0.12,.3,0.17>*0.4]
+		[0 color rgb <.1,.1,.1>]
+		[1 color rgb 1*0.4]
 	}
 	scale 0.04
 }
 #declare BOZO2 = pigment {
 	bozo
 	color_map {
-		[0 color rgb <.12,.30,.17>]
-		[1 color rgb <0.12,.3,0.17>*.6]
+		[0 color rgb <1,1,.1>]
+		[1 color rgb <0.1,.3,1>*.6]
 	}
 	scale 0.04
 }
@@ -420,21 +386,21 @@ object{ Tree_01
 
 #include "kiefer.inc"
 union {
-object{FOLIAGE texture{Blaetter_Sommer2}}
+object{FOLIAGE texture{Blaetter_Winter1}}
 object{WOOD}
 double_illuminate hollow
 scale 25
 translate <40,0,-120>
 }
 union {
-object{FOLIAGE texture{Blaetter_Sommer1}}
+object{FOLIAGE texture{Blaetter_Winter1}}
 object{WOOD}
 double_illuminate hollow
 scale 28
 translate <-10,0,-110>
 }
 union {
-object{FOLIAGE texture{Blaetter_Sommer2}}
+object{FOLIAGE texture{Blaetter_Winter1}}
 object{WOOD}
 double_illuminate hollow
 scale 24
@@ -444,7 +410,7 @@ translate <-10,0,-70>
 //Taubenschlag
 object{Taubenschlag_Taubenschlag_ scale .002 translate <70,0,-20> material{Taubenschlag_}}
 //Bodenplatte
-object {bodenplatte texture { pigment{ image_map { jpeg "grasstex1.jpg" map_type 0 interpolate 2}} rotate x*90 scale 15 finish {ambient 0}}}
+object {bodenplatte texture { pigment{ image_map { jpeg "grasstex1_schnee.jpg" map_type 0 interpolate 2}} rotate x*90 scale 15 finish {ambient 0}}}
 
 #declare Richtung = 3;
 #switch ( Richtung )
